@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abc2026.iba-us.org/sitemap.xml
