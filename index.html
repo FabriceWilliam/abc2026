@@ -774,9 +774,6 @@ let SIM = null; // {date, minutes} for preview; null = real time
 // La clé d'ÉCRITURE vit uniquement dans le panneau admin, saisie à la main
 // et conservée en localStorage sur l'appareil du régisseur.
 const SYNC_URL = 'https://api.jsonbin.io/v3/b/6a615b86f5f4af5e29b3500f/latest';
-
-const SYNC_KEY = '$2a$10$Wp1609o4WRgG2h793r0Apu68XqLg6Vyw0vA23HYZVIsjaSLOSaxi6';
-
 let OVERRIDES = {};
 
 let FLASH = '';
@@ -787,7 +784,7 @@ async function fetchLiveStatus(){
 
   try{
 
-    const r = await fetch(SYNC_URL, {cache:'no-store', headers:{'X-Access-Key':SYNC_KEY}});
+    const r = await fetch(SYNC_URL, {cache:'no-store'});
 
     if(!r.ok) return;
 
