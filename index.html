@@ -773,26 +773,43 @@ let SIM = null; // {date, minutes} for preview; null = real time
 // (option "Private: false"). On le lit donc SANS en-tête d'authentification.
 // La clé d'ÉCRITURE vit uniquement dans le panneau admin, saisie à la main
 // et conservée en localStorage sur l'appareil du régisseur.
-const SYNC_URL = null;  // ex: 'https://api.jsonbin.io/v3/b/XXXXXXXX/latest'
-let OVERRIDES = {};     // { sid: {status:'live|late|done', delay:15} }
+const SYNC_URL = 'https://api.jsonbin.io/v3/b/6a615b86f5f4af5e29b3500f/latest';
+
+const SYNC_KEY = '$2a$10$5749IcfzHqJWkx8.usTN8.krJKh4sA8y87m5z1IUU0aoutdsrhCDy';
+
+let OVERRIDES = {};
+
 let FLASH = '';
 
 async function fetchLiveStatus(){
+
   if(!SYNC_URL) return;
+
   try{
-    // Lecture seule, sans clé. Le cache est court-circuité pour que les
-    // changements du régisseur apparaissent au prochain cycle de 30 s.
-    const r = await fetch(SYNC_URL, {cache:'no-store'});
+
+    const r = await fetch(SYNC_URL, {cache:'no-store', headers:{'X-Access-Key':SYNC_KEY}});
+
     if(!r.ok) return;
+
     const data = await r.json();
+
     const prog = (data && data.record) ? (data.record.program || data.record) : null;
+
     if(prog){
+
       OVERRIDES = prog.overrides || {};
+
       FLASH = prog.flash || '';
+
       applyFlash();
+
       build();
+
     }
+
   }catch(e){ /* réseau coupé : on garde le dernier état connu */ }
+
+}
 }
 
 function applyFlash(){
