@@ -737,14 +737,12 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
   #vo-splash{
     position:fixed; inset:0; z-index:99999;
     display:flex; align-items:center; justify-content:center;
-    /* Fond glass / platinium : dégradé clair + lueur radiale centrée
-       derrière le logo. Légère transparence (.97) pour laisser jouer
-       backdrop-filter. Aucun rouge (réservé au live). */
+    /* Fond clair platine — opacité pleine, aucun backdrop-filter :
+       rien du contenu de page ne peut « saigner » et assombrir le splash.
+       Textes marine du logo (chargé PNG transparent) lisibles net. */
     background:
-      radial-gradient(80% 55% at 50% 42%, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 65%),
-      linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(245,246,248,.97) 100%);
-    -webkit-backdrop-filter: blur(10px) saturate(1.05);
-            backdrop-filter: blur(10px) saturate(1.05);
+      radial-gradient(80% 55% at 50% 42%, #ffffff 0%, rgba(255,255,255,0) 65%),
+      linear-gradient(180deg, #ffffff 0%, #f5f6f8 100%);
     animation:vo-fade 3.5s ease forwards;  /* durée d'affichage INCHANGÉE */
   }
   #vo-splash .vo-wrap{
@@ -758,11 +756,9 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
     margin:0 0 24px;
   }
   #vo-splash .vo-logo{
-    display:block; width:100%; max-width:380px; aspect-ratio:760/287;
-    margin:0 auto; background-image:var(--vo-logo);
-    background-size:contain; background-repeat:no-repeat; background-position:center;
-    /* Fond blanc du logo absorbé par le fond glass sans halo net. */
-    mix-blend-mode: multiply;
+    display:block; width:100%; max-width:380px; height:auto;
+    margin:0 auto;
+    /* PNG transparent — aucun mix-blend-mode, aucun halo. */
   }
   #vo-splash .vo-sub{
     margin:22px 0 0;
@@ -794,7 +790,7 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 <div id="vo-splash" aria-hidden="true">
   <div class="vo-wrap">
     <div class="vo-pre">Powered by</div>
-    <div class="vo-logo" role="img" aria-label="VeyraOps"></div>
+    <img class="vo-logo" src="img/veyraops-logo.png" alt="VeyraOps" decoding="async" fetchpriority="high">
     <div class="vo-sub">Live program updates</div>
   </div>
 </div>
