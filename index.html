@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -234,7 +234,14 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-fo
 }
 .day-hero{text-align:center;margin-bottom:20px;}
 .day-hero .theme-lbl{font-size:11px;letter-spacing:4px;color:var(--amber);font-weight:700;text-transform:uppercase;}
-.day-hero h2{font-family:var(--serif);font-weight:700;font-size:clamp(30px,7vw,48px);letter-spacing:1px;color:var(--navy);text-transform:uppercase;line-height:1;margin:6px 0;}
+.day-hero h2{font-family:var(--serif);font-weight:700;font-size:clamp(24px,6.4vw,42px);letter-spacing:.5px;color:var(--navy);text-transform:uppercase;line-height:1.1;margin:6px 0;
+  /* Équilibre visuel des 4 titres : longueurs inégales (17→30 caractères)
+     faisaient sauter la hauteur au changement de jour à 375 px.
+     — text-wrap:balance : wrap équilibré du long titre "Business Expo & Cultural Night"
+     — min-height:2.2em : réserve 2 lignes → hauteur constante 1-ligne vs 2-lignes
+     — flex-center : titre 1 ligne centré verticalement dans l'espace réservé. */
+  text-wrap:balance;min-height:2.2em;
+  display:flex;align-items:center;justify-content:center;}
 .day-hero .theme-quote{font-size:16px;color:var(--purple);font-style:italic;font-weight:600;}
 .day-hero .day-meta{font-size:14px;color:var(--ink-soft);margin-top:6px;}
 
@@ -730,45 +737,57 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
   #vo-splash{
     position:fixed; inset:0; z-index:99999;
     display:flex; align-items:center; justify-content:center;
-    background:#ffffff;
-    animation:vo-fade 3.5s ease forwards;
+    /* Fond glass / platinium : dégradé clair + lueur radiale centrée
+       derrière le logo. Légère transparence (.97) pour laisser jouer
+       backdrop-filter. Aucun rouge (réservé au live). */
+    background:
+      radial-gradient(80% 55% at 50% 42%, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 65%),
+      linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(245,246,248,.97) 100%);
+    -webkit-backdrop-filter: blur(10px) saturate(1.05);
+            backdrop-filter: blur(10px) saturate(1.05);
+    animation:vo-fade 3.5s ease forwards;  /* durée d'affichage INCHANGÉE */
   }
   #vo-splash .vo-wrap{
     text-align:center; padding:0 28px;
-    animation:vo-zoom 3.5s cubic-bezier(.18,.72,.28,1) forwards;
+    animation:vo-enter 600ms cubic-bezier(.16,.72,.24,1) forwards;
   }
   #vo-splash .vo-pre{
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    font-size:11px; letter-spacing:5px; text-transform:uppercase;
-    color:#8A8FA3; margin-bottom:18px;
+    font-size:11px; letter-spacing:6px; text-transform:uppercase; font-weight:600;
+    color:#667080;                 /* 5,01:1 sur blanc */
+    margin:0 0 24px;
   }
   #vo-splash .vo-logo{
-    display:block; width:100%; max-width:340px; aspect-ratio:760/287;
+    display:block; width:100%; max-width:380px; aspect-ratio:760/287;
     margin:0 auto; background-image:var(--vo-logo);
     background-size:contain; background-repeat:no-repeat; background-position:center;
+    /* Fond blanc du logo absorbé par le fond glass sans halo net. */
+    mix-blend-mode: multiply;
   }
   #vo-splash .vo-sub{
-    margin-top:16px;
+    margin:22px 0 0;
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    font-size:13px; letter-spacing:2px; text-transform:uppercase;
-    color:#5E6B7E;
+    font-size:12px; letter-spacing:3px; text-transform:uppercase; font-weight:500;
+    color:#4A5568;                 /* ~7:1 sur blanc */
   }
-  @keyframes vo-zoom{
-    0%   { opacity:0; transform:scale(.80); }
-    28%  { opacity:1; transform:scale(1); }
-    72%  { opacity:1; transform:scale(1.05); }
-    100% { opacity:0; transform:scale(1.13); }
+  @keyframes vo-enter{
+    0%   { opacity:0; transform:scale(.92); }
+    100% { opacity:1; transform:scale(1); }
   }
   @keyframes vo-fade{
     0%,74% { opacity:1; }
     100%   { opacity:0; visibility:hidden; pointer-events:none; }
   }
+  @keyframes vo-fade-in{
+    from { opacity:0; }
+    to   { opacity:1; }
+  }
   @media (min-width:768px){
-    #vo-splash .vo-logo{ max-width:440px; }
+    #vo-splash .vo-logo{ max-width:480px; }
   }
   @media (prefers-reduced-motion:reduce){
     #vo-splash{ animation:vo-fade .9s ease forwards; }
-    #vo-splash .vo-wrap{ animation:none; opacity:1; transform:none; }
+    #vo-splash .vo-wrap{ animation:vo-fade-in 300ms ease forwards; }
   }
 </style>
 
@@ -783,11 +802,6 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 
 <div class="flash-banner" id="flashBanner"><span class="fic">📢</span><span id="flashText"></span></div>
 
-<div class="lang-toggle">
-  <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
-  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-</div>
-
 <!-- ═══════════════════════════════════════════════════════════════
      BANDEAU TITRE + CARROUSEL D'EN-TÊTE
      Remplace l'ancien bloc .hero. Palette --brand-* uniquement.
@@ -799,11 +813,35 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
   html[lang="fr"] .abc-i18n[lang="en"]{display:none;}
   html[lang="en"] .abc-i18n[lang="fr"]{display:none;}
 
-  .abc-titleband{background:#073676;color:#fff;padding:9px 16px;text-align:center;}
+  .abc-titleband{background:#073676;color:#fff;padding:8px 16px;}
   .abc-titleband-inner{max-width:1120px;margin:0 auto;
-    font-family:var(--sans);font-size:12.5px;font-weight:600;line-height:1.35;
-    letter-spacing:.06em;text-transform:uppercase;}
-  @media (min-width:768px){.abc-titleband-inner{font-size:14px;letter-spacing:.09em;}}
+    display:flex;align-items:center;gap:12px;}
+  .abc-titleband-text{
+    flex:1 1 auto;min-width:0;text-align:center;
+    font-family:var(--sans);font-size:11.5px;font-weight:600;line-height:1.35;
+    letter-spacing:.03em;text-transform:uppercase;
+  }
+  @media (min-width:768px){.abc-titleband-text{font-size:14px;letter-spacing:.08em;}}
+
+  /* Toggle FR/EN — déplacé DANS la bande titre. Neutralise le fixed
+     hérité de .lang-toggle, restyle pour lire sur marine #073676. */
+  .abc-titleband .lang-toggle{
+    position:static;top:auto;right:auto;z-index:auto;
+    flex:0 0 auto;display:inline-flex;gap:6px;
+  }
+  .abc-titleband .lang-btn{
+    min-height:26px;min-width:36px;padding:3px 10px;
+    border-radius:14px;border:1px solid rgba(255,255,255,.4);
+    background:transparent;color:#fff;                /* 11,68:1 sur #073676 */
+    font-family:var(--sans);font-size:11px;font-weight:700;line-height:1;
+    cursor:pointer;
+    transition:background-color .12s ease,color .12s ease,border-color .12s ease;
+  }
+  .abc-titleband .lang-btn:hover{background:rgba(255,255,255,.14);}
+  .abc-titleband .lang-btn.active{
+    background:#fff;color:#073676;border-color:#fff;   /* 11,68:1 */
+  }
+  .abc-titleband .lang-btn:focus-visible{outline:2px solid #fff;outline-offset:2px;}
 
   .abc-carousel{background:var(--brand-paper);padding:14px 0 18px;position:relative;}
   .abc-cc-viewport{position:relative;}
@@ -860,8 +898,14 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 
 <div class="abc-titleband" role="region" aria-label="Titre de la convention">
   <div class="abc-titleband-inner">
-    <span class="abc-i18n" lang="fr">All Bamiléké Convention of North America — Chicago 2026 — 4–6 sept.</span>
-    <span class="abc-i18n" lang="en">All Bamiléké Convention of North America — Chicago 2026 — Sept. 4–6</span>
+    <div class="abc-titleband-text">
+      <span class="abc-i18n" lang="fr">All Bamiléké Convention of North America — Chicago 2026 — 3–6 sept.</span>
+      <span class="abc-i18n" lang="en">All Bamiléké Convention of North America — Chicago 2026 — Sept. 3–6</span>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </div>
 
@@ -1169,7 +1213,7 @@ function chicagoClockChip(){
 </div>
 
 <script>
-let LANG = 'fr';
+let LANG = 'en';
 
 const C = {
   greenG:'var(--g-green)', amberG:'var(--g-amber)', blueG:'var(--g-blue)',
@@ -1264,7 +1308,7 @@ function parseSlot(t){
 const DAYS = [
  {id:'jeu',date:3,tab:{fr:'Jeudi',en:'Thursday'},tabsub:{fr:'3 Sept · Leadership',en:'Sep 3 · Leadership'},
   theme:{fr:'D\u2019où Nous Venons',en:'Where We Come From'},
-  title:{fr:'Soirée Leadership',en:'Leadership Dinner'},
+  title:{fr:'Soirée Leadership',en:'Leadership Night'},
   meta:{fr:'Jeudi 3 Septembre · VIP & Dignitaires',en:'Thursday September 3 · VIP & Dignitaries'},
   blocks:[
    {sid:'jeu-cocktail',t:'17:00 – 18:30',ttl:{fr:'Cocktail VIP + Zone Jeunesse',en:'VIP Cocktail + Youth Zone'},dur:'90 min',g:C.emeraldG,
@@ -1800,7 +1844,7 @@ function adaptToEmbedding(){
 (function initLangFromQuery(){
   try{
     const q = new URLSearchParams(location.search).get('lang');
-    if(q === 'en') LANG = 'en';
+    if(q === 'fr' || q === 'en') LANG = q;
   }catch(e){}
 })();
 
@@ -1808,11 +1852,9 @@ adaptToEmbedding();
 build();
 applyFlash();
 applyFooterLang();
-if(LANG === 'en'){
-  document.documentElement.lang = 'en';
-  document.getElementById('btn-fr').classList.remove('active');
-  document.getElementById('btn-en').classList.add('active');
-}
+document.documentElement.lang = LANG;
+document.getElementById('btn-fr').classList.toggle('active', LANG === 'fr');
+document.getElementById('btn-en').classList.toggle('active', LANG === 'en');
 // Initial live-status pull + refresh every 30s
 fetchLiveStatus();
 setInterval(()=>{
