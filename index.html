@@ -616,10 +616,26 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 .rd-list.takeaway li .d{background:var(--brand-sky);}
 
 /* ─── Growth Tracks — en-têtes de salle ───────────────────── */
-.track-heading{display:flex;align-items:center;gap:10px;padding:12px 14px 8px;background:var(--brand-paper);border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);}
+.track-heading{display:flex;align-items:center;gap:10px;padding:12px 14px 8px;
+  background:linear-gradient(90deg,rgba(86,193,236,.08),rgba(7,54,118,.04));
+  border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);}
 .track-heading:first-child{border-top:none;}
-.track-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;color:#fff;font-family:var(--cond);font-weight:700;font-size:13px;line-height:1;flex:none;}
+.track-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;color:#fff;font-family:var(--cond);font-weight:700;font-size:13px;line-height:1;flex:none;
+  background:linear-gradient(135deg,var(--brand-navy) 0%,var(--brand-navy) 60%,var(--brand-sky) 100%);}
 .track-name{font-family:var(--sans);font-weight:600;font-size:13px;color:var(--brand-navy);letter-spacing:.2px;}
+
+/* ─── Motif Ndop — décor et structure, jamais dans la donnée ── */
+.ndop-band{height:48px;background:url('img/ndop-pattern.jpg') center/160px auto repeat;}
+.blk.has-tracks::before{width:9px;
+  background:url('img/ndop-pattern.jpg') center top/90px auto repeat-y;}
+.blk.has-tracks.is-live::before{background:var(--brand-red);}
+.blk.has-tracks .blk-body{padding-left:12px;}
+.blk.has-tracks .blk-head{padding-left:22px;}
+.evening-band{padding:22px 20px;color:#fff;letter-spacing:3px;
+  background:linear-gradient(rgba(7,54,118,.72),rgba(7,54,118,.72)),url('img/ndop-pattern.jpg') center/160px auto repeat;
+  border-radius:12px;margin:24px 0 14px;}
+.day-hero .theme-lbl{display:inline-block;padding-bottom:7px;
+  background:url('img/ndop-pattern.jpg') center bottom/60px 3px no-repeat;}
 
 /* ─── Pitch rows ───────────────────────────────────────────── */
 .pitch-row{border-bottom:1px solid var(--brand-line);}
@@ -1146,6 +1162,7 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
   })();
 </script>
 
+<div class="ndop-band" aria-hidden="true"></div>
 <div class="daynav"><div class="daynav-inner" id="daynav"></div></div>
 <script>
 // Live Chicago clock chip (appended into daynav after build)
@@ -1176,6 +1193,7 @@ function chicagoClockChip(){
   <div class="modal" id="modalBox"></div>
 </div>
 
+<div class="ndop-band" aria-hidden="true"></div>
 <div class="foot">
   <div class="t">All Bamiléké Convention</div>
   <div class="s">Of North America · Chicago 2026<br>Tinley Park Convention Center<br>18451 Convention Center Drive, Tinley Park IL 60477</div>
@@ -1713,7 +1731,7 @@ function renderBlock(b, dayDate){
   }
   if(b.tracks){
     inner = b.tracks.map(tr=>{
-      const heading = `<div class="track-heading"><span class="track-num" style="background:${ROOM_COLORS[tr.roomIdx % ROOM_COLORS.length]}">${tr.roomIdx+1}</span><span class="track-name">${L(tr.name)}</span></div>`;
+      const heading = `<div class="track-heading"><span class="track-num">${tr.roomIdx+1}</span><span class="track-name">${L(tr.name)}</span></div>`;
       const sessions = tr.sessions.map(s=>renderRoom({...s, r:'Room '+(tr.roomIdx+1)}, dayDate, b.t, tr.roomIdx, b.sid)).join('');
       return heading + sessions;
     }).join('');
@@ -1729,7 +1747,8 @@ function renderBlock(b, dayDate){
   const sacredTag = b.sacred ? '<span class="sacred-tag">✦</span>' : '';
   const badge = (st!=='none') ? statusBadge(st, b.sid) : '';
   const stateCls = st==='live'?'is-live':st==='cancel'?'is-cancel':st==='moved'?'is-moved':st==='ended'?'is-ended':'';
-  return `<div class="blk ${stateCls}">
+  const tracksCls = b.tracks ? ' has-tracks' : '';
+  return `<div class="blk ${stateCls}${tracksCls}">
     <div class="blk-head" style="background:${b.g}">
       <span class="time">${b.t}</span>
       <span class="ttl">${L(b.ttl)}${sacredTag}</span>
