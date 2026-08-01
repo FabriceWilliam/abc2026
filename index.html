@@ -17,7 +17,7 @@
      ═══════════════════════════════════════════════════════════ -->
 
 <title>Programme — All Bamiléké Convention of North America · Chicago 2026</title>
-<meta name="description" content="Programme complet des 4 jours. 3–6 septembre 2026, Tinley Park Convention Center, Chicago. Soirée Leadership, Business Expo, Symposium & Gala, Festival Culturel.">
+<meta name="description" content="Programme complet des 4 jours. 3–6 septembre 2026, Tinley Park Convention Center, Chicago. Dîner Leadership, Business Expo, Symposium & Gala, Festival Culturel.">
 <link rel="canonical" href="https://abc2026.iba-us.org/">
 <link rel="alternate" hreflang="fr" href="https://abc2026.iba-us.org/">
 <link rel="alternate" hreflang="en" href="https://abc2026.iba-us.org/?lang=en">
@@ -52,7 +52,7 @@
   "endDate":"2026-09-06T18:00:00-05:00",
   "eventStatus":"https://schema.org/EventScheduled",
   "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
-  "description":"Convention annuelle de la communauté Bamiléké d'Amérique du Nord. Quatre jours : Soirée Leadership, Business Expo & Cultural Night, Symposium & Gala Night, Festival Culturel.",
+  "description":"Convention annuelle de la communauté Bamiléké d'Amérique du Nord. Quatre jours : Dîner Leadership, Business Expo & Cultural Night, Symposium & Gala Night, Festival Culturel.",
   "image":"https://abc2026.iba-us.org/apercu.jpg",
   "url":"https://abc2026.iba-us.org/",
   "inLanguage":["fr","en"],
@@ -75,7 +75,7 @@
     "email":"contact@iba-us.org"
   },
   "subEvent":[
-    {"@type":"Event","name":"Soirée Leadership","startDate":"2026-09-03T17:00:00-05:00","endDate":"2026-09-03T21:00:00-05:00","location":{"@type":"Place","name":"Tinley Park Convention Center"}},
+    {"@type":"Event","name":"Dîner Leadership","startDate":"2026-09-03T17:00:00-05:00","endDate":"2026-09-03T21:00:00-05:00","location":{"@type":"Place","name":"Tinley Park Convention Center"}},
     {"@type":"Event","name":"Business Expo & Cultural Night","startDate":"2026-09-04T10:00:00-05:00","endDate":"2026-09-05T00:00:00-05:00","location":{"@type":"Place","name":"Tinley Park Convention Center"}},
     {"@type":"Event","name":"Symposium & Gala Night","startDate":"2026-09-05T10:00:00-05:00","endDate":"2026-09-05T22:15:00-05:00","location":{"@type":"Place","name":"Tinley Park Convention Center"}},
     {"@type":"Event","name":"Festival Culturel","startDate":"2026-09-06T08:30:00-05:00","endDate":"2026-09-06T18:00:00-05:00","location":{"@type":"Place","name":"Tinley Park Convention Center"}}
@@ -148,8 +148,9 @@
   --tap:44px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;background:#FBF9F5;}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;}
+html{scroll-behavior:smooth;background:#FBF9F5;overflow-x:clip;}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:clip;}
+@supports not (overflow:clip){html,body{overflow-x:hidden;}}
 
 .lang-toggle{position:fixed;top:14px;right:14px;z-index:100;display:flex;
   background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-radius:24px;
@@ -181,20 +182,22 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-fo
 .hero-city{font-family:var(--cond);font-weight:700;font-size:26px;letter-spacing:8px;color:#fff;text-transform:uppercase;margin-top:14px;font-style:italic;}
 
 .daynav{position:sticky;top:0;z-index:50;background:rgba(18,19,46,.97);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:12px 0;box-shadow:0 4px 20px rgba(0,0,0,.25);}
-.daynav::after{content:'';position:absolute;top:0;right:0;bottom:0;width:36px;pointer-events:none;
-  background:linear-gradient(90deg,transparent,rgba(18,19,46,.95));z-index:2;}
-.daynav-inner{max-width:960px;margin:0 auto;padding:0 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;align-items:center;}
+.daynav::after{display:none;}
+.daynav-inner{max-width:960px;margin:0 auto;padding:0 16px;display:flex;gap:6px;overflow:visible;align-items:stretch;flex-wrap:wrap;}
 .chi-clock{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.16);
   border:1px solid rgba(245,158,11,.4);color:var(--gold-l,#FCD34D);border-radius:20px;padding:6px 12px;
   font-size:11px;font-weight:700;white-space:nowrap;margin-left:auto;}
 .chi-clock .ct-time{font-variant-numeric:tabular-nums;letter-spacing:.5px;}
 .chi-clock .ct-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulse 1.6s ease-in-out infinite;}
 .daynav-inner::-webkit-scrollbar{display:none;}
-.daytab{flex:0 0 auto;padding:11px 16px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;
-  background:rgba(255,255,255,.08);color:#C7C2DC;border:1.5px solid rgba(255,255,255,.12);white-space:nowrap;transition:all .18s;}
-.daytab .sub{display:block;font-size:11px;font-weight:500;opacity:.7;margin-top:1px;letter-spacing:.5px;}
+.daytab{flex:1 1 0;min-width:0;padding:8px 8px 10px;border-radius:12px;cursor:pointer;
+  background:rgba(255,255,255,.08);color:#C7C2DC;border:1.5px solid rgba(255,255,255,.12);
+  display:flex;flex-direction:column;align-items:stretch;text-align:center;transition:all .18s;}
+.daytab .dt-date{font-family:var(--sans);font-size:12.5px;font-weight:700;line-height:1.2;letter-spacing:.2px;}
+.daytab .dt-title{font-family:var(--sans);font-size:10.5px;font-weight:500;line-height:1.3;margin-top:3px;opacity:.85;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
 .daytab.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
-.daytab.active .sub{opacity:.75;}
+.daytab.active .dt-title{opacity:.9;}
 
 .day-panel{display:none;}
 .day-panel.active{display:block;}
@@ -491,7 +494,6 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 /* ─── Lang toggle & day nav ────────────────────────────────── */
 .lang-btn.active{background:var(--brand-sky);color:var(--brand-navy);}
 .daynav{background:rgba(7,54,118,.97);}
-.daynav::after{background:linear-gradient(90deg,transparent,rgba(7,54,118,.95));}
 .daytab.active{background:var(--brand-sky);color:var(--brand-navy);border-color:var(--brand-sky);}
 .chi-clock{background:var(--brand-pill-soon-bg);border:1px solid var(--brand-navy);color:var(--brand-navy);}
 .chi-clock .ct-dot{background:var(--brand-navy);}
@@ -606,9 +608,18 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 .room-timing{background:transparent;color:var(--brand-ink2);font-weight:500;padding:2px 0;}
 .rd-lbl.expect{color:var(--brand-navy);}
 .rd-lbl.takeaway{color:var(--brand-navy);}
+.rd-lbl.bio{color:var(--brand-navy);}
+.rd-bio{font-size:12.5px;color:var(--brand-ink2);line-height:1.5;padding:2px 0 4px;}
+.rd-bio.tbd{font-style:italic;}
 .rd-list li{color:var(--brand-ink2);}
 .rd-list.expect li .d{background:var(--brand-navy);}
 .rd-list.takeaway li .d{background:var(--brand-sky);}
+
+/* ─── Growth Tracks — en-têtes de salle ───────────────────── */
+.track-heading{display:flex;align-items:center;gap:10px;padding:12px 14px 8px;background:var(--brand-paper);border-top:1px solid var(--brand-line);border-bottom:1px solid var(--brand-line);}
+.track-heading:first-child{border-top:none;}
+.track-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;color:#fff;font-family:var(--cond);font-weight:700;font-size:13px;line-height:1;flex:none;}
+.track-name{font-family:var(--sans);font-weight:600;font-size:13px;color:var(--brand-navy);letter-spacing:.2px;}
 
 /* ─── Pitch rows ───────────────────────────────────────────── */
 .pitch-row{border-bottom:1px solid var(--brand-line);}
@@ -705,23 +716,13 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 }
 
 /* ─── Bandeau des jours : 4 onglets visibles a 375 px ─────── */
-.daytab .lbl-mob{display:none;}
 @media(max-width:480px){
   .daynav{padding:8px 0;}
-  .daynav-inner{flex-wrap:wrap; padding:0 12px; gap:6px;}
-  .daytab{
-    flex:1 1 0; min-width:0;
-    padding:8px 6px;
-    text-align:center;
-  }
-  .daytab .lbl-desk{display:none;}
-  .daytab .lbl-mob{display:block;}
-  .daytab .lbl-mob .m1{display:block;font-size:12px;font-weight:700;line-height:1.2;white-space:nowrap;}
-  .daytab .lbl-mob .m2{display:block;font-size:10.5px;font-weight:500;line-height:1.2;margin-top:2px;letter-spacing:.2px;white-space:nowrap;}
-  .chi-clock{
-    flex:1 0 100%; margin:0;
-    justify-content:center;
-  }
+  .daynav-inner{padding:0 12px;gap:4px;}
+  .daytab{padding:7px 5px 9px;border-radius:10px;}
+  .daytab .dt-date{font-size:11.5px;letter-spacing:.1px;}
+  .daytab .dt-title{font-size:9.5px;line-height:1.25;margin-top:2px;}
+  .chi-clock{flex:1 0 100%;margin:0;justify-content:center;}
 }
 </style>
 </head>
@@ -1232,8 +1233,8 @@ const UI = {
   kpiDuree:{fr:'Durée',en:'Duration'}, kpiSessions:{fr:'Sessions',en:'Sessions'},
   kpiAteliers:{fr:'Ateliers',en:'Workshops'}, kpiPitchs:{fr:'Pitchs',en:'Pitches'},
   bannerLbl:{fr:'Business Expo & Networking',en:'Business Expo & Networking'},
-  bannerMeta:{fr:'VENDREDI 4 SEPTEMBRE 2026 · 10H00 – 16H00 · TINLEY PARK CONVENTION CENTER',
-              en:'FRIDAY SEPTEMBER 4, 2026 · 10:00 AM – 4:00 PM · TINLEY PARK CONVENTION CENTER'},
+  bannerMeta:{fr:'VENDREDI 4 SEPTEMBRE 2026 · 8H30 – 18H00 · TINLEY PARK CONVENTION CENTER',
+              en:'FRIDAY SEPTEMBER 4, 2026 · 8:30 AM – 6:00 PM · TINLEY PARK CONVENTION CENTER'},
   pillarsHint:{fr:'Touchez un pilier pour le détail des créneaux',en:'Tap a pillar for slot details'},
   more:{fr:'Détail',en:'Details'},
   live:{fr:'LIVE NOW',en:'LIVE NOW'}, ended:{fr:'TERMINÉ',en:'ENDED'}, soon:{fr:'BIENTÔT',en:'SOON'},
@@ -1241,13 +1242,14 @@ const UI = {
   kidneyOrg:{fr:'National Kidney Foundation of Illinois',en:'National Kidney Foundation of Illinois'},
   kidneyDesc:{fr:'KidneyMobile sur place — dépistage gratuit rein & diabète. Partenariat avec l\u2019Illinois Bamiléké Association.',
               en:'KidneyMobile on site — free kidney & diabetes screening. Partnership with the Illinois Bamiléké Association.'},
-  kidneyPractical:{fr:'18 ans et + · Walk-ins bienvenus · Résultats remis le jour même',en:'18+ only · Walk-ins welcome · Same-day results'},
+  kidneyPractical:{fr:'18 ans et + · Sans rendez-vous · Résultats remis le jour même',en:'18+ only · Walk-ins welcome · Same-day results'},
   kidneyCta:{fr:'Pré-inscription : mobilescreening.nkfi.org/preregistration',en:'Pre-register: mobilescreening.nkfi.org/preregistration'},
   late:{fr:'EN RETARD',en:'DELAYED'},
   cancelled:{fr:'ANNULÉ',en:'CANCELLED'},
   movedTo:{fr:'DÉPLACÉ →',en:'MOVED →'},
   expect:{fr:'Contenu de la session',en:'Session content'},
   takeaway:{fr:'Ce que vous en tirez',en:'What you leave with'},
+  bio:{fr:'Intervenant.e',en:'Speaker'},
   tapDetail:{fr:'Détails',en:'Details'},
   pillarSessions:{fr:'Créneaux concernés',en:'Relevant slots'},
 };
@@ -1255,28 +1257,28 @@ const UI = {
 const PILLARS = [
   {key:'MEET',ic:'🤝',bg:'var(--green)',color:'var(--green)',nm:'Meet',
    ds:{fr:'Qui est dans la salle',en:'Who is in the room'},
-   desc:{fr:'Les intervenants restent sur place entre les sessions. Le brunch de 90 minutes et les deux plages de stands sont les moments où l\u2019on se parle sans rendez-vous.',
-         en:'Speakers stay on site between sessions. The 90-minute brunch and the two booth periods are when people talk without an appointment.'},
-   points:{fr:['Welcome Panel : 10h00, ouvre la journée','Brunch 11h15–12h45 : intervenants accessibles','Stands ouverts jusqu\u2019à 16h00'],
-           en:['Welcome Panel: 10:00, opens the day','Brunch 11:15–12:45: speakers accessible','Booths open until 4:00 PM']}},
+   desc:{fr:'Les intervenants restent sur place entre les sessions. Le déjeuner Business Marketplace et les trois heures d’expo ouverte en fin de journée sont les moments où l’on se parle sans rendez-vous.',
+         en:'Speakers stay on site between sessions. The Business Marketplace lunch and the three-hour open expo at the end of the day are when people talk without an appointment.'},
+   points:{fr:['Café d’accueil : 8h30, ouvre la journée','Déjeuner Marketplace 13h00–14h00','Marketplace ouvert 15h00–18h00'],
+           en:['Welcome coffee: 8:30, opens the day','Marketplace lunch 1:00–2:00 PM','Open Marketplace 3:00–6:00 PM']}},
   {key:'LEARN',ic:'💡',bg:'var(--amber)',color:'var(--amber)',nm:'Learn',
-   ds:{fr:'14 ateliers, 2 rounds',en:'14 workshops, 2 rounds'},
-   desc:{fr:'Sept salles en parallèle le matin, sept l\u2019après-midi. Chaque atelier dure 45 minutes : 25 de présentation, 20 de questions. On choisit une salle par round.',
-         en:'Seven parallel rooms in the morning, seven in the afternoon. Each workshop runs 45 minutes: 25 presenting, 20 for questions. One room per round.'},
-   points:{fr:['Round #1 : 10h30–11h15','Round #2 : 13h55–14h40','Inspirational Talk 10h10 et Midpoint 12h45'],
-           en:['Round #1: 10:30–11:15','Round #2: 1:55–2:40 PM','Inspirational Talk 10:10 and Midpoint 12:45']}},
+   ds:{fr:'17 ateliers, 5 salles',en:'17 workshops, 5 rooms'},
+   desc:{fr:'Cinq salles thématiques en parallèle sur 1h40, sessions de 25 minutes enchaînées. Précédées de la cérémonie d’ouverture, du keynote et d’une plénière santé en Main Hall.',
+         en:'Five thematic rooms in parallel for 1h40, 25-minute sessions back to back. Preceded by the opening ceremony, keynote, and a healthcare plenary in the Main Hall.'},
+   points:{fr:['Cérémonie & Keynote : 10h00–10h45','Plénière Santé : 10h50–11h15','Growth Tracks : 11h20–13h00'],
+           en:['Ceremony & Keynote: 10:00–10:45','Healthcare Plenary: 10:50–11:15','Growth Tracks: 11:20 AM–1:00 PM']}},
   {key:'CONNECT',ic:'🔗',bg:'var(--blue)',color:'var(--blue)',nm:'Connect',
-   ds:{fr:'Stands et tables',en:'Booths and tables'},
-   desc:{fr:'Les exposants tiennent leur stand toute la journée. Deux plages sont réservées au networking debout, sans programme imposé : 90 minutes au brunch, 80 minutes en clôture.',
-         en:'Exhibitors hold their booth all day. Two periods are set aside for stand-up networking with no fixed agenda: 90 minutes at brunch, 80 minutes at close.'},
-   points:{fr:['Brunch + stands : 11h15–12h45','Stands + networking : 14h40–16h00','Mentorship Hub pendant le brunch'],
-           en:['Brunch + booths: 11:15–12:45','Booths + networking: 2:40–4:00 PM','Mentorship Hub during brunch']}},
+   ds:{fr:'Marketplace et rencontres',en:'Marketplace and meets'},
+   desc:{fr:'Les exposants tiennent leur stand toute la journée. Trois plages sont dédiées aux échanges sans programme imposé : l’avant-première de l’expo, le déjeuner Marketplace, puis trois heures de networking ouvert.',
+         en:'Exhibitors hold their booth all day. Three periods are dedicated to informal exchange: the expo preview, the Marketplace lunch, then three hours of open networking.'},
+   points:{fr:['Avant-première Expo : 8h30–9h45','Déjeuner + Marketplace : 13h00–14h00','Marketplace ouvert : 15h00–18h00'],
+           en:['Expo preview: 8:30–9:45','Lunch + Marketplace: 1:00–2:00 PM','Open Marketplace: 3:00–6:00 PM']}},
   {key:'GROW',ic:'🚀',bg:'var(--red)',color:'var(--red)',nm:'Grow',
-   ds:{fr:'4 pitchs devant investisseurs',en:'4 pitches to investors'},
-   desc:{fr:'Quatre entrepreneurs présentent leur projet entre 12h50 et 13h50. Quinze minutes chacun : dix de pitch, cinq de questions. La salle assiste.',
-         en:'Four entrepreneurs present between 12:50 and 1:50 PM. Fifteen minutes each: ten pitching, five for questions. Open to the room.'},
-   points:{fr:['Pitch 1 : 12h50 · Pitch 2 : 13h05','Pitch 3 : 13h20 · Pitch 4 : 13h35','Format : 10 min + 5 min de questions'],
-           en:['Pitch 1: 12:50 · Pitch 2: 1:05 PM','Pitch 3: 1:20 PM · Pitch 4: 1:35 PM','Format: 10 min + 5 min questions']}},
+   ds:{fr:'3 pitchs devant l’audience',en:'3 pitches to the audience'},
+   desc:{fr:'Trois entrepreneurs présentent leur projet entre 14h00 et 14h45. Quinze minutes chacun : dix de pitch, cinq de questions. La salle assiste.',
+         en:'Three entrepreneurs present between 2:00 and 2:45 PM. Fifteen minutes each: ten pitching, five for questions. Open to the room.'},
+   points:{fr:['Pitch 1 : 14h00 · Pitch 2 : 14h15','Pitch 3 : 14h30','Format : 10 min + 5 min de questions'],
+           en:['Pitch 1: 2:00 · Pitch 2: 2:15 PM','Pitch 3: 2:30 PM','Format: 10 min + 5 min questions']}},
 ];
 
 function L(v){ return (v && typeof v==='object' && 'fr' in v) ? v[LANG] : v; }
@@ -1302,9 +1304,9 @@ function parseSlot(t){
 }
 
 const DAYS = [
- {id:'jeu',date:3,tab:{fr:'Jeudi',en:'Thursday'},tabsub:{fr:'3 Sept · Leadership',en:'Sep 3 · Leadership'},
+ {id:'jeu',date:3,tab:{fr:'Jeudi',en:'Thursday'},tabsub:{fr:'Jeu 3 Sept · Dîner Leadership',en:'Thu Sep 3 · Leadership Dinner'},
   theme:{fr:'D\u2019où Nous Venons',en:'Where We Come From'},
-  title:{fr:'Soirée Leadership',en:'Leadership Night'},
+  title:{fr:'Dîner Leadership',en:'Leadership Dinner'},
   meta:{fr:'Jeudi 3 Septembre · VIP & Dignitaires',en:'Thursday September 3 · VIP & Dignitaries'},
   blocks:[
    {sid:'jeu-cocktail',t:'17:00 – 18:30',ttl:{fr:'Cocktail VIP + Zone Jeunesse',en:'VIP Cocktail + Youth Zone'},dur:'90 min',g:C.emeraldG,
@@ -1323,100 +1325,129 @@ const DAYS = [
     solo:[['—',{fr:'Performance artistique contemporaine · Clôture de la soirée',en:'Contemporary artistic performance · Evening close'}]]},
   ]},
 
- {id:'ven',date:4,tab:{fr:'Vendredi',en:'Friday'},tabsub:{fr:'4 Sept · Business Expo',en:'Sep 4 · Business Expo'},
+ {id:'ven',date:4,tab:{fr:'Vendredi',en:'Friday'},tabsub:{fr:'Ven 4 Sept · Business Expo & Soirée Culturelle',en:'Fri Sep 4 · Business Expo & Cultural Night'},
   theme:{fr:'Ce Que Nous Construisons',en:'What We Are Building'},
   title:{fr:'Business Expo & Cultural Night',en:'Business Expo & Cultural Night'},
-  meta:{fr:'Vendredi 4 Septembre · 10h00 – 16h00 · JOURNÉE DÉTAILLÉE',en:'Friday September 4 · 10:00 AM – 4:00 PM · DETAILED DAY'},
+  meta:{fr:'Vendredi 4 Septembre · 8h30 – 18h00 · JOURNÉE DÉTAILLÉE',en:'Friday September 4 · 8:30 AM – 6:00 PM · DETAILED DAY'},
   isExpo:true,
   blocks:[
-   {sid:'ven-welcome',t:'10:00 – 10:10',ttl:{fr:'Welcome & Opening Panel — Kickoff',en:'Welcome & Opening Panel — Kickoff'},dur:'10 min',g:C.emeraldG,
-    solo:[['Edwige',{fr:'Introduction · Insights clés pour donner le ton',en:'Event introduction · Key insights to set the tone'}]]},
-   {sid:'ven-talk',t:'10:10 – 10:25',ttl:{fr:'Inspirational Talk',en:'Inspirational Talk'},dur:'15 min',g:C.goldG,
-    solo:[['Stephanie Mbida',{fr:'Lien avec les objectifs et attentes de l\u2019événement',en:'Link to goals and expectations from the event'}]]},
-   {sid:'ven-r1',t:'10:30 – 11:15',ttl:{fr:'Workshops Round #1 — 7 salles parallèles',en:'Workshops Round #1 — 7 parallel rooms'},
-    fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.indigoG,
-    rooms:[
-     {r:'Room 1',who:'Stephanie Mbida',topic:{fr:'Éducation financière',en:'Financial Education'},
-      sub:{fr:'Prendre le contrôle de ses finances',en:'Taking control of your finances'},
-      expect:{fr:['Les bases de la gestion budgétaire personnelle','Comment épargner et investir intelligemment'],en:['Personal budgeting fundamentals','How to save and invest wisely']},
-      take:{fr:['Un plan financier de départ','Des outils concrets de suivi'],en:['A starter financial plan','Concrete tracking tools']}},
-     {r:'Room 2',who:'Dr. Dominique Sighoko',topic:{fr:'Investir dans l\u2019immobilier sans dette',en:'How to Invest in Real Estate Without Debt'},
-      sub:{fr:'Bâtir un patrimoine immobilier autrement',en:'Building property wealth differently'},
-      expect:{fr:['Stratégies d\u2019acquisition sans crédit classique','Études de cas de la diaspora'],en:['Acquisition strategies without traditional credit','Diaspora case studies']},
-      take:{fr:['Un cadre de décision d\u2019investissement','Des pistes de financement alternatives'],en:['An investment decision framework','Alternative financing paths']}},
-     {r:'Room 3',who:'Ornella R. Tchoumie',topic:{fr:'L\u2019IA pour bâtir ce que vous ne savez pas coder',en:'Leveraging AI to Build What You Can\u2019t Code'},
-      sub:{fr:'Créer sans être développeur',en:'Building without being a developer'},
-      expect:{fr:['Panorama des outils IA no-code','Démonstrations en direct'],en:['Overview of no-code AI tools','Live demonstrations']},
-      take:{fr:['Une boîte à outils IA prête à l\u2019emploi','Un premier prototype d\u2019idée'],en:['A ready-to-use AI toolkit','A first idea prototype']}},
-     {r:'Room 4',who:'Dr Carmen Fotso',topic:{fr:'Naviguer le système de santé américain',en:'Navigating the U.S. Healthcare System'},
-      sub:{fr:'Comprendre ses droits et options',en:'Understanding your rights and options'},
-      expect:{fr:['Fonctionnement de l\u2019assurance santé US','Éviter les pièges de facturation'],en:['How U.S. health insurance works','Avoiding billing pitfalls']},
-      take:{fr:['Une checklist santé pour la famille','Des ressources fiables'],en:['A family health checklist','Reliable resources']}},
-     {r:'Room 5',who:'Whilly Tiedjop',topic:{fr:'Élever de futurs champions',en:'Raising Future Champions'},
-      sub:{fr:'Le sport jeunesse comme tremplin',en:'Youth sports as a springboard'},
-      expect:{fr:['Naviguer les opportunités sportives US','Le rôle des parents'],en:['Navigating U.S. sports opportunities','The role of parents']},
-      take:{fr:['Un guide pour accompagner son enfant','Un réseau de parents'],en:['A guide to support your child','A network of parents']}},
-     {r:'Room 6',who:'DCEO',topic:'tbd',tbd:true,
-      sub:{fr:'À confirmer',en:'To be confirmed'},
-      expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
-      take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
-     {r:'Room 7',who:'Sponsor 1',topic:'tbd',tbd:true,
-      sub:{fr:'À confirmer',en:'To be confirmed'},
-      expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
-      take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
+   {sid:'ven-b1',t:'8:30 – 9:45 AM',ttl:{fr:'Accueil, café et avant-première de l’Expo',en:'Registration, Coffee & Expo Preview'},dur:'75 min',g:C.steelG,
+    solo:[['—',{fr:'Arrivez, connectez-vous, découvrez. Les participants explorent les exposants, rencontrent les autres participants et préparent leur stratégie de networking pour la journée.',en:'Arrive. Connect. Discover. Attendees explore exhibitors, meet fellow participants, and prepare their networking strategy for the day.'},true]]},
+   {sid:'ven-b2',t:'10:00 – 10:10 AM',ttl:{fr:'Cérémonie d’ouverture — Main Hall',en:'Opening Ceremony — Main Hall'},dur:'10 min',g:C.emeraldG,
+    solo:[['—',{fr:'Définissez vos intentions pour réussir. Les participants apprennent à tirer le meilleur de leur expérience ABC Chicago, à naviguer les ateliers et à créer des connexions utiles.',en:'Set Your Intentions for Success. Attendees learn how to maximize their ABC Chicago experience, navigate workshops, and create meaningful connections.'}]]},
+   {sid:'ven-b3',t:'10:15 – 10:45 AM',ttl:{fr:'Keynote d’ouverture — Main Hall',en:'Opening Keynote — Main Hall'},dur:'30 min',g:C.goldG,
+    solo:[['Stephanie Mbida',{fr:'« Bâtir la richesse à travers les générations : confiance financière, propriété et héritage » · Stratégies pour construire la confiance financière et un état d’esprit d’héritage.',en:'"Building Wealth Across Generations: Financial Confidence, Ownership & Legacy" · Strategies for building financial confidence and a legacy mindset.'}]]},
+   {sid:'ven-b4',t:'10:50 – 11:15 AM',ttl:{fr:'Plénière Santé — Main Hall',en:'Healthcare Plenary — Main Hall'},dur:'25 min',g:C.crimsonG,
+    solo:[['Dr Carmen Fotso',{fr:'« Naviguer le système de santé américain : ce que chaque famille doit savoir » · Les connaissances pratiques pour prendre des décisions de santé éclairées.<div class="room-subtitle">Co-intervenants : Dr Rodrigue Tinfang, Dr Koumani Ntowe et Christiane Sokoundjo</div>',en:'"Navigating the U.S. Healthcare System: What Every Family Should Know" · Practical knowledge to make informed healthcare decisions.<div class="room-subtitle">Co-presenters: Dr Rodrigue Tinfang, Dr Koumani Ntowe and Christiane Sokoundjo</div>'}]]},
+   {sid:'ven-b5',t:'11:20 – 1:00 PM',ttl:{fr:'Growth Tracks — 5 salles en parallèle',en:'Growth Tracks — 5 parallel rooms'},
+    fmt:{fr:'Sessions de 25 min',en:'25-min sessions'},g:C.indigoG,
+    tracks:[
+     {name:{fr:'Leadership et réussite professionnelle',en:'Leadership and Career Success'},roomIdx:0,
+      sessions:[
+       {t:'11:20 – 11:45',who:'Elvis Tognia',
+        topic:{fr:'Votre voix est votre influence : communiquer avec confiance, diriger avec impact',en:'Your Voice Is Your Influence: Communicate with Confidence, Lead with Impact'},
+        bio:{fr:'Auteur, conférencier et leader en communication.',en:'Author, Speaker and Communication Leader.'},
+        take:{fr:['Communiquer avec assurance et articuler sa valeur','Développer la présence exécutive pour influencer et progresser'],en:['Communicate with confidence and articulate your value','Build executive presence to influence and advance']}},
+       {t:'11:45 – 12:10',who:'Noumbissi Tenku',
+        topic:{fr:'Se réinventer : réussir sa reconversion professionnelle à tout âge',en:'Reinventing Yourself: Successfully Pivoting Your Career at Any Age'},
+        bio:{fr:'Chef de projet en finance d’entreprise (pharma). Fondateur d’Eco Relief (stratégie ESG comme avantage concurrentiel).',en:'Corporate Finance Project Manager (Pharma). Founder of Eco Relief (ESG strategy for competitive advantage).'},
+        take:{fr:['Identifier ses compétences transférables','Bâtir une feuille de route de reconversion réaliste'],en:['Identify your transferable skills','Build a practical career-change roadmap']}},
+       {t:'12:10 – 12:35',who:'Serge Nameni',
+        topic:{fr:'Bâtir son héritage : carrière, entreprise et culture',en:'Building Your Legacy: Career, Business & Culture'},
+        bio:{fr:'Fondateur et CEO de Layer 1 Technologies (infrastructures cloud et IA aux États-Unis et au-delà).',en:'Founder and CEO of Layer 1 Technologies (cloud and AI infrastructure across the US and beyond).'},
+        take:{fr:['Naviguer emploi et entrepreneuriat depuis un parcours vécu','Faire de son identité culturelle un levier'],en:['Navigate employment and entrepreneurship from a lived journey','Turn cultural identity into leverage']}},
+      ]},
+     {name:{fr:'Création de richesse et investissement',en:'Wealth Creation & Investing'},roomIdx:1,
+      sessions:[
+       {t:'11:20 – 11:45',who:'Dr. Dominique Sighoko',
+        topic:{fr:'Investir dans l’immobilier au comptant',en:'How to Invest in Real Estate with Cash'},
+        bio:{fr:'PharmD, MPH, PhD. Investisseuse immobilière, propriétaire d’Abraham Jacob’s Properties, LLC.',en:'PharmD, MPH, PhD. Real estate investor, owner of Abraham Jacob’s Properties, LLC.'},
+        take:{fr:['Mobiliser épargne et planification pour acquérir sans dette','Évaluer les opportunités et bâtir un patrimoine durable'],en:['Leverage savings and planning to acquire without debt','Evaluate opportunities and build lasting wealth']}},
+       {t:'11:45 – 12:10',who:'Ariane Tiani',
+        topic:{fr:'Investir dans l’immobilier : laissez votre locataire payer votre crédit',en:'How to Invest in Real Estate: Let Your Tenant Pay Your Mortgage'},
+        bio:{fr:'Courtière immobilière chez Berkshire Hathaway HomeServices Chicago.',en:'Real Estate Broker at Berkshire Hathaway HomeServices Chicago.'},
+        take:{fr:['Utiliser revenus locatifs et financements intelligents','Construire capital et patrimoine par la propriété'],en:['Use rental income and smart financing','Build equity and wealth through ownership']}},
+       {t:'12:10 – 12:35',who:'Maguy Atanga',
+        topic:{fr:'Investir et gérer son capital au Cameroun',en:'Investing & Capital Management in Cameroon'},
+        bio:{fr:'À confirmer',en:'To be confirmed'},bioTbd:true,
+        take:{fr:['Investir sereinement au Cameroun','Évaluer opportunités et risques transfrontaliers'],en:['Invest confidently in Cameroon','Evaluate cross-border opportunities and risks']}},
+       {t:'12:35 – 1:00 PM',who:'Cyrielle Kouamou',
+        topic:{fr:'Au-delà des frontières : ouvrir les opportunités d’investissement mondiales à la diaspora africaine',en:'Beyond Borders: Unlocking Global Investment Opportunities for the African Diaspora'},
+        bio:{fr:'Fondatrice & directrice générale de Kouamou Capital (Paris) — stratégie d’investissement transfrontalière. MBA marchés financiers ; DBA en cours (Toulouse Business School).',en:'Founder & Managing Director of Kouamou Capital (Paris) — cross-border investment strategy. MBA in Financial Markets; DBA in progress (Toulouse Business School).'},
+        take:{fr:['Comprendre comment sont évaluées les opportunités privées','Participer comme investisseur, partenaire ou intermédiaire'],en:['Understand how private opportunities are evaluated','Participate as investor, partner or connector']}},
+      ]},
+     {name:{fr:'IA, innovation et technologie',en:'AI, Innovation & Technology'},roomIdx:2,
+      sessions:[
+       {t:'11:20 – 11:45',who:'Ornella R. Tchoumie',
+        topic:{fr:'Au-delà du prototype : l’IA pour bâtir ce que vous ne savez pas coder',en:'Beyond the Prototype: Leveraging AI to Build What You Can’t Code'},
+        bio:{fr:'Master in Information Management, UC Berkeley. Security Product Manager, Workday. Fondatrice d’ALMA (intelligence capillaire mobile).',en:'UC Berkeley Master in Information Management. Security Product Manager, Workday. Founder of ALMA (data-driven hair intelligence mobile app).'},
+        take:{fr:['Lancer une application en combinant plusieurs outils d’IA'],en:['Launch an app using diverse AI tools']}},
+       {t:'11:45 – 12:10',who:'KEYZANE',
+        topic:{fr:'Intelligence appliquée : transformer la donnée en meilleures décisions',en:'Applied Intelligence: Turning Data into Better Decisions'},
+        bio:{fr:'À confirmer',en:'To be confirmed'},bioTbd:true,
+        take:{fr:['Exploiter donnée et IA pour décider plus vite et mieux','Applications pour organisations, entrepreneurs et communautés'],en:['Leverage data and AI to decide faster and better','Applications for organizations, entrepreneurs and communities']}},
+       {t:'12:10 – 12:35',who:'Wilfried Muiche',
+        topic:{fr:'Au-delà du mythe du self-made : bâtir la prospérité par les systèmes, la technologie et la communauté',en:'Beyond the Myth of Self-Made Success: Engineering Prosperity Through Systems, Technology & Community'},
+        bio:{fr:'Officier de cyberguerre (capitaine, US Army Reserve), ingénieur logiciel, entrepreneur tech. Fondateur de Brainycom, CEO de Willan Technologies & POSSA, président de Doco Drive, Inc.',en:'U.S. Army Reserve Cyber Warfare Officer (Captain), Software Engineer, Tech Entrepreneur. Founder of Brainycom, CEO of Willan Technologies & POSSA, Chairman & President of Doco Drive, Inc.'},
+        take:{fr:['Mobiliser technologie, systèmes, cybersécurité et communauté','Bâtir des entreprises résilientes à impact durable'],en:['Combine tech, systems, cybersecurity and community','Build resilient businesses with lasting impact']}},
+      ]},
+     {name:{fr:'Entrepreneuriat et croissance',en:'Entrepreneurship & Business Growth'},roomIdx:3,
+      sessions:[
+       {t:'11:20 – 11:45',who:'Illinois DCEO',
+        topic:{fr:'De l’idée au lancement : créer son entreprise en 90 jours',en:'From Idea to Launch: How to Establish Your Business in 90 Days'},
+        bio:{fr:'Illinois Department of Commerce and Economic Opportunity (libellé à confirmer)',en:'Illinois Department of Commerce and Economic Opportunity (label to be confirmed)'},bioTbd:true,
+        take:{fr:['Étapes clés : plan d’affaires, obligations légales, ressources','Feuille de route pour lancer en 90 jours'],en:['Key steps: business plan, legal requirements, resources','Roadmap to launch in 90 days']}},
+       {t:'11:45 – 12:10',who:'Illinois DCEO',
+        topic:{fr:'Obtenir un prêt pour sa petite entreprise',en:'How to Obtain Small Business Loans'},
+        bio:{fr:'Illinois Department of Commerce and Economic Opportunity (libellé à confirmer)',en:'Illinois Department of Commerce and Economic Opportunity (label to be confirmed)'},bioTbd:true,
+        take:{fr:['Préparer entreprise et dossier de financement','Attentes des prêteurs et leviers d’acceptation'],en:['Prepare business and financing file','Lender expectations and approval levers']}},
+       {t:'12:10 – 12:35',who:'Edwige & Jean-Brice Ngouen',
+        topic:{fr:'De la recette africaine aux rayons américains : bâtir une marque primée',en:'From African Recipes to U.S. Retail: Building an Award-Winning Brand'},
+        bio:{fr:'Cofondateurs de COCKTAILMENOT LLC, à l’origine de la croissance de la marque primée TITUN SPRITZ.',en:'Co-Founders of COCKTAILMENOT LLC, driving the growth of the award-winning TITUN SPRITZ brand.'},
+        take:{fr:['Développement produit, fabrication, image de marque','Partenariats de distribution grand public'],en:['Product development, manufacturing, branding','Retail distribution partnerships']}},
+       {t:'12:35 – 1:00 PM',who:'Gaspard Defustel',
+        topic:{fr:'Entrer sur le marché du luxe',en:'How to Enter the Luxury Market'},
+        bio:{fr:'À confirmer',en:'To be confirmed'},bioTbd:true,
+        take:{fr:['Contenu à confirmer'],en:['Content to be confirmed']}},
+      ]},
+     {name:{fr:'Famille, héritage et communauté',en:'Family, Legacy and Community'},roomIdx:4,
+      sessions:[
+       {t:'11:20 – 11:45',who:'Whilly Tiedjop',
+        topic:{fr:'Élever de futurs champions : guider les parents dans le sport de jeunesse',en:'Raising Future Champions: Helping Parents Navigate Youth Sports Opportunities'},
+        bio:{fr:'Fondateur et directeur de programme, Step by Step Volleyball School. Ancien volleyeur pro, champion international, All-American universitaire.',en:'Founder & Program Director, Step by Step Volleyball School. Former pro volleyball player, international champion, collegiate All-American.'},
+        take:{fr:['Identifier les bonnes opportunités sportives pour son enfant','Concilier sport, scolarité et perspectives long terme'],en:['Identify the right youth sports opportunities','Balance sports, academics and long-term outlook']}},
+       {t:'11:45 – 12:10',who:'Elodie',
+        topic:{fr:'Bâtir son héritage : la planification successorale',en:'Building Your Legacy: Estate Planning'},
+        bio:{fr:'Professionnelle de la finance, stratège certifiée en planification successorale, fondatrice d’Elodie Legacy Financial Solutions.',en:'Financial Professional, Certified Estate Planning strategist, Owner of Elodie Legacy Financial Solutions.'},
+        take:{fr:['Outils essentiels de planification successorale','Protéger la famille et préserver le patrimoine'],en:['Essential estate planning tools','Protect family and preserve wealth']}},
+       {t:'12:10 – 12:35',who:'COSNET',
+        topic:{fr:'Bâtir des communautés fortes : les leçons des associations de la diaspora',en:'How Strong Communities Are Built: Lessons from Successful Diaspora Nonprofits'},
+        bio:{fr:'À confirmer',en:'To be confirmed'},bioTbd:true,
+        take:{fr:['Recruter, engager, gouverner une association durable','Stratégies de collecte de fonds à impact durable'],en:['Recruit, engage, govern a sustainable nonprofit','Fundraising strategies with lasting impact']}},
+      ]},
     ]},
-   {sid:'ven-brunch',t:'11:15 – 12:45',ttl:{fr:'Brunch + Booth Exploration + Networking',en:'Brunch + Booth Exploration + Networking'},dur:'90 min',g:C.steelG,
-    solo:[['—',{fr:'Visite des exposants + Stand Up Networking · Mentorship Hub · Scavenger Hunt',en:'Visit exhibitors + Stand Up Networking · Mentorship Hub · Scavenger Hunt'},true]]},
+   {sid:'ven-b6',t:'1:00 – 2:00 PM',ttl:{fr:'Déjeuner Business Marketplace et networking',en:'Business Marketplace Lunch & Networking'},dur:'60 min',g:C.orangeG,
+    solo:[['—',{fr:'Transformez les conversations en opportunités. Déjeuner, exploration de l’expo, mise en relation d’affaires, rencontre avec les intervenants et introductions ciblées.',en:'Turn Conversations Into Opportunities. Lunch, expo exploration, business matchmaking, speaker meet & greet, and "People You Should Meet" introductions.'},true]]},
+   {sid:'ven-b7',t:'2:00 – 2:45 PM',ttl:{fr:'Vitrine des entrepreneurs (pitchs)',en:'Entrepreneur Pitch Showcase'},
+    fmt:{fr:'3 × 15 min · 10 min + 5 min Q&R',en:'3 × 15 min · 10 min + 5 min Q&A'},g:C.cyanG,
+    pitch:[['2:00 – 2:15','Pitch 1'],['2:15 – 2:30','Pitch 2'],['2:30 – 2:45','Pitch 3']]},
    {sid:'ven-kidney', parallel:true, t:'12:00 – 16:00', tEnglish:'12:00 PM – 4:00 PM',
     org:'National Kidney Foundation of Illinois', van:'KidneyMobile',
-    services:['Blood pressure','Blood glucose','HbA1c','BMI','Waist circumference','Urinalysis','Blood draw (si nécessaire)']},
-   {sid:'ven-midpoint',t:'12:45 – 12:50',ttl:{fr:'Midpoint Reconnection',en:'Midpoint Reconnection'},dur:'5 min',g:C.orangeG,
-    solo:[['Dr Calvin',{fr:'Recentrer l\u2019énergie et les points clés',en:'Re-align energy and key takeaways'}]]},
-   {sid:'ven-pitch',t:'12:50 – 1:50 PM',ttl:{fr:'Business Growth Pitch Session',en:'Business Growth Pitch Session'},
-    fmt:{fr:'10 min + 5 min Q&R',en:'10 min + 5 min Q&A'},g:C.crimsonG,
-    pitch:[['12:50 – 1:05','Pitch 1'],['1:05 – 1:20','Pitch 2'],['1:20 – 1:35','Pitch 3'],['1:35 – 1:50','Pitch 4']]},
-   {sid:'ven-r2',t:'1:55 – 2:40 PM',ttl:{fr:'Workshops Round #2 — 7 salles parallèles',en:'Workshops Round #2 — 7 parallel rooms'},
-    fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.cyanG,
-    rooms:[
-     {r:'Room 1',who:'Mr Tenku',topic:{fr:'Se réinventer à 40 ans et au-delà',en:'Reinventing Yourself at 40 and Beyond'},
-      sub:{fr:'Réussir sa reconversion',en:'Successfully pivoting your career'},
-      expect:{fr:['Identifier ses atouts transférables','Gérer la transition financièrement'],en:['Identifying transferable strengths','Managing the transition financially']},
-      take:{fr:['Une feuille de route de reconversion','Un état d\u2019esprit renouvelé'],en:['A career-change roadmap','A renewed mindset']}},
-     {r:'Room 2',who:'Kim Dobyns',topic:{fr:'Immobilier via une banque',en:'Real Estate Through a Bank'},
-      sub:{fr:'Laissez le locataire payer votre prêt',en:'Let the tenant pay your mortgage'},
-      expect:{fr:['Monter un dossier bancaire solide','Choisir le bon bien locatif'],en:['Building a strong bank file','Choosing the right rental property']},
-      take:{fr:['Un modèle de calcul de rentabilité','Une stratégie de financement'],en:['A profitability calculation model','A financing strategy']}},
-     {r:'Room 3',who:'Wilfrid Muiche',topic:{fr:'Au-delà du mythe du self-made',en:'Beyond the Myth of Self-Made Success'},
-      sub:{fr:'Prospérer par les systèmes et la communauté',en:'Prospering through systems and community'},
-      expect:{fr:['Pourquoi le succès n\u2019est jamais solitaire','Bâtir des systèmes reproductibles'],en:['Why success is never solitary','Building repeatable systems']},
-      take:{fr:['Un cadre de pensée systémique','Des leviers communautaires'],en:['A systems-thinking framework','Community levers']}},
-     {r:'Room 4',who:'Serge T.',topic:{fr:'Bâtir son héritage',en:'Building Your Legacy'},
-      sub:{fr:'Carrière, Business et Culture',en:'Career, Business and Culture'},
-      expect:{fr:['Aligner réussite et transmission','Ancrer son héritage culturel'],en:['Aligning success and legacy','Anchoring your cultural heritage']},
-      take:{fr:['Une vision d\u2019héritage à long terme','Des actions concrètes de transmission'],en:['A long-term legacy vision','Concrete legacy actions']}},
-     {r:'Room 5',who:'DCEO',topic:'tbd',tbd:true,
-      sub:{fr:'À confirmer',en:'To be confirmed'},
-      expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
-      take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
-     {r:'Room 6',who:'Sponsor 2',topic:'tbd',tbd:true,
-      sub:{fr:'À confirmer',en:'To be confirmed'},
-      expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
-      take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
-     {r:'Room 7',who:'Sponsor 3',topic:'tbd',tbd:true,
-      sub:{fr:'À confirmer',en:'To be confirmed'},
-      expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
-      take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
-    ]},
-   {sid:'ven-close',t:'2:40 – 4:00 PM',ttl:{fr:'Booth Exploration + Networking — Clôture',en:'Booth Exploration + Networking — Close'},dur:'80 min',g:C.slateG,
-    solo:[['—',{fr:'Visite des exposants + Stand Up Networking · Clôture de la journée Business',en:'Visit exhibitors + Stand Up Networking · Close of the Business day'},true]]},
+    services:{fr:['Tension artérielle','Glycémie','HbA1c','IMC','Tour de taille','Analyse d’urine','Prélèvement sanguin (si nécessaire)'],en:['Blood pressure','Blood glucose','HbA1c','BMI','Waist circumference','Urinalysis','Blood draw (if needed)']}},
+   {sid:'ven-b8',t:'3:00 – 6:00 PM',ttl:{fr:'Business Marketplace et networking ouvert',en:'Business Marketplace & Open Networking'},dur:'180 min',g:C.slateG,
+    solo:[['—',{fr:'Construisez des relations qui durent au-delà de l’événement. Renouez avec les intervenants, explorez les entreprises, nouez partenariats, mentorats et collaborations.',en:'Build Relationships That Continue Beyond the Event. Reconnect with speakers, explore businesses, and forge partnerships, mentorships, and collaborations.'},true]]},
   ],
-  note:{fr:'sujets de Room 6/7 (Round #1) et Room 5/6/7 (Round #2) réservés — intervenants et créneaux fixés. Les 4 Pitchs ont leurs créneaux posés, en attente des noms.',
-        en:'topics for Room 6/7 (Round #1) and Room 5/6/7 (Round #2) reserved — speakers and slots fixed. The 4 Pitches have their slots set, awaiting names.'},
-  verify:{fr:'✓ Chrono vérifié : 10h00 à 16h00 exactement (360 min)',en:'✓ Timing verified: 10:00 AM to 4:00 PM exactly (360 min)'},
+  /* Pending items — not rendered publicly. Internal notes for committee follow-up:
+     - A1 source-file typo "Credetials" (Room 4)
+     - A2 DCEO label "Illinois Department of Commerce and Economic Opportunity" to be confirmed
+     - A3 Gaspard Defustel (Room 4, session 4): credentials and takeaway missing
+     - A4 credentials pending: Maguy Atanga, KEYZANE, COSNET
+     - A5 Entrepreneur Pitch Showcase 2:00–2:45 PM (45 min) fits 3 pitches of 15 min; to be confirmed */
+  verify:{fr:'✓ Chrono vérifié : 8h30 à 18h00 exactement (570 min)',en:'✓ Timing verified: 8:30 AM to 6:00 PM exactly (570 min)'},
   evening:{t:'19:30 – 00:00',ttl:{fr:'Cultural Night',en:'Cultural Night'},dur:{fr:'Soirée',en:'Evening'},g:C.violetG,
     solo:[['—',{fr:'Tapis rouge · Cocktail · Défilé de mode jeunesse · Concours de danse · Artiste vedette',en:'Red carpet · Cocktail · Youth fashion show · Dance contest · Featured artist'}]]}},
 
- {id:'sam',date:5,tab:{fr:'Samedi',en:'Saturday'},tabsub:{fr:'5 Sept · Symposium & Gala',en:'Sep 5 · Symposium & Gala'},
+ {id:'sam',date:5,tab:{fr:'Samedi',en:'Saturday'},tabsub:{fr:'Sam 5 Sept · Symposium & Soirée de Gala',en:'Sat Sep 5 · Symposium & Gala Night'},
   theme:{fr:'Qui Nous Sommes',en:'Who We Are'},
   title:{fr:'Symposium & Gala Night',en:'Symposium & Gala Night'},
   meta:{fr:'Samedi 5 Septembre · Journée + Soirée de Gala',en:'Saturday September 5 · Day + Gala Evening'},
@@ -1447,7 +1478,7 @@ const DAYS = [
     solo:[['—',{fr:'Performance de clôture de la soirée GALA',en:'Closing performance of the GALA evening'}]]},
   ]},
 
- {id:'dim',date:6,tab:{fr:'Dimanche',en:'Sunday'},tabsub:{fr:'6 Sept · Festival Culturel',en:'Sep 6 · Cultural Festival'},
+ {id:'dim',date:6,tab:{fr:'Dimanche',en:'Sunday'},tabsub:{fr:'Dim 6 Sept · Festival Culturel',en:'Sun Sep 6 · Cultural Festival'},
   theme:{fr:'Où Nous Allons',en:'Where We Are Going'},
   title:{fr:'Festival Culturel',en:'Cultural Festival'},
   meta:{fr:'Dimanche 6 Septembre · Ouvert à toute la communauté',en:'Sunday September 6 · Open to the whole community'},
@@ -1611,9 +1642,11 @@ function renderRoom(rm, dayDate, parentSlot, idx, parentSid){
   const rid = 'room-'+(roomIdCounter++);
   const liveTag = st==='live';
   const accent = tbd ? 'var(--room-tbd)' : (ROOM_COLORS[idx % ROOM_COLORS.length]);
-  const dur = durationLabel(parentSlot);
+  const slotDisplay = rm.t || parentSlot;
+  const dur = durationLabel(slotDisplay);
   const expectList = (rm.expect?L(rm.expect):[]).map(x=>`<li><span class="d"></span>${x}</li>`).join('');
   const takeList = (rm.take?L(rm.take):[]).map(x=>`<li><span class="d"></span>${x}</li>`).join('');
+  const bioBlock = rm.bio ? `<div class="rd-block"><div class="rd-lbl bio">🎤 ${UI.bio[LANG]}</div><div class="rd-bio${rm.bioTbd?' tbd':''}">${L(rm.bio)}</div></div>` : '';
   const roomCls = liveTag?'is-live-room':(st==='cancel'?'is-cancel-room':st==='ended'?'is-ended-room':'');
   return `<div class="room ${roomCls}" id="${rid}">
     <div class="room-summary" onclick="toggleRoom('${rid}')">
@@ -1624,7 +1657,7 @@ function renderRoom(rm, dayDate, parentSlot, idx, parentSid){
         <div class="room-who">${rm.who}</div>
         <div class="room-topic${tbd?' tbd':''}">${topic}</div>
         ${rm.sub?`<div class="room-subtitle">${L(rm.sub)}</div>`:''}
-        <div class="room-timing"><span class="clock">🕐</span>${parentSlot} · ${dur}</div>
+        <div class="room-timing"><span class="clock">🕐</span>${slotDisplay} · ${dur}</div>
       </div>
       <div class="room-right">
         ${statusBadge(st, parentSid)}
@@ -1633,6 +1666,7 @@ function renderRoom(rm, dayDate, parentSlot, idx, parentSid){
     </div>
     <div class="room-detail">
       <div class="room-detail-inner">
+        ${bioBlock}
         ${expectList?`<div class="rd-block"><div class="rd-lbl expect">🎯 ${UI.expect[LANG]}</div><ul class="rd-list expect">${expectList}</ul></div>`:''}
         ${takeList?`<div class="rd-block"><div class="rd-lbl takeaway">🎁 ${UI.takeaway[LANG]}</div><ul class="rd-list takeaway">${takeList}</ul></div>`:''}
       </div>
@@ -1643,7 +1677,7 @@ function renderRoom(rm, dayDate, parentSlot, idx, parentSid){
 function renderParallelCard(b, dayDate){
   const st = statusFor(b.t, dayDate, b.sid);
   const badge = (st!=='none') ? statusBadge(st, b.sid) : '';
-  const services = (b.services||[]).map(s=>`<span>${s}</span>`).join('');
+  const services = (b.services?L(b.services):[]).map(s=>`<span>${s}</span>`).join('');
   return `<div class="parallel-card ${st==='live'?'is-live':st==='cancel'?'is-cancel':''}">
     <div class="parallel-head">
       <span class="parallel-tag">${UI.parallelTag[LANG]}</span>
@@ -1677,6 +1711,13 @@ function renderBlock(b, dayDate){
   if(b.rooms){
     inner = b.rooms.map((rm,i)=>renderRoom(rm, dayDate, b.t, i, b.sid)).join('');
   }
+  if(b.tracks){
+    inner = b.tracks.map(tr=>{
+      const heading = `<div class="track-heading"><span class="track-num" style="background:${ROOM_COLORS[tr.roomIdx % ROOM_COLORS.length]}">${tr.roomIdx+1}</span><span class="track-name">${L(tr.name)}</span></div>`;
+      const sessions = tr.sessions.map(s=>renderRoom({...s, r:'Room '+(tr.roomIdx+1)}, dayDate, b.t, tr.roomIdx, b.sid)).join('');
+      return heading + sessions;
+    }).join('');
+  }
   if(b.pitch){
     inner = b.pitch.map(p=>`<div class="pitch-row">
       <div class="pitch-time">${p[0]}<div style="font-size:9px;font-weight:600;color:var(--gray);margin-top:2px;">🕐 15 min</div></div>
@@ -1699,7 +1740,7 @@ function renderBlock(b, dayDate){
 }
 
 function renderExpoHeader(){
-  const kpis = [['6h',UI.kpiDuree[LANG]],['14',UI.kpiSessions[LANG]],['14',UI.kpiAteliers[LANG]],['4',UI.kpiPitchs[LANG]]];
+  const kpis = [['9h30',UI.kpiDuree[LANG]],['20',UI.kpiSessions[LANG]],['17',UI.kpiAteliers[LANG]],['3',UI.kpiPitchs[LANG]]];
   let h = `<div class="expo-banner-mini">
     <div class="lbl">${UI.bannerLbl[LANG]}</div>
     <div class="meta">${UI.bannerMeta[LANG]}</div>
@@ -1769,12 +1810,12 @@ function build(){
   DAYS.forEach(d=>{
     const tab = document.createElement('div');
     tab.className = 'daytab'+(d.id===activeDayId?' active':'');
-    const _sub = L(d.tabsub).split(' · ');
-    const _dayAbbr = L(d.tab).slice(0,3);
-    const _themeAbbr = ({jeu:'Leadership',ven:'Business',sam:'Symposium',dim:'Festival'})[d.id] || '';
+    const _parts = L(d.tabsub).split(' · ');
+    const _dtDate = _parts[0] || L(d.tab);
+    const _dtTitle = _parts.slice(1).join(' · ');
     tab.innerHTML =
-      `<span class="lbl-desk">${L(d.tab)}<span class="sub">${L(d.tabsub)}</span></span>` +
-      `<span class="lbl-mob"><span class="m1">${_dayAbbr} ${_sub[0]}</span><span class="m2">${_themeAbbr}</span></span>`;
+      `<span class="dt-date">${_dtDate}</span>` +
+      `<span class="dt-title">${_dtTitle}</span>`;
     tab.onclick = ()=>{
       activeDayId = d.id;
       build();
