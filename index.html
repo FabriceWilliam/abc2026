@@ -126,7 +126,7 @@
   --g-forest:linear-gradient(100deg,#14532D,#0F3D21);
   --g-orange:linear-gradient(100deg,#C2490A,#9E3A08);
   --g-bronze:linear-gradient(100deg,#8A5406,#6E4305);
-  --g-gold:linear-gradient(100deg,#A97104,#875A03);
+  --g-gold:linear-gradient(100deg,#C9A227,#B8901D);
   --g-indigo:linear-gradient(100deg,#4338CA,#3730A3);
   --g-sky:linear-gradient(100deg,#0269A0,#01536F);
   --g-cyan:linear-gradient(100deg,#07708C,#055A70);
@@ -193,7 +193,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-fo
 .daytab{flex:0 0 auto;padding:11px 16px;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;
   background:rgba(255,255,255,.08);color:#C7C2DC;border:1.5px solid rgba(255,255,255,.12);white-space:nowrap;transition:all .18s;}
 .daytab .sub{display:block;font-size:11px;font-weight:500;opacity:.7;margin-top:1px;letter-spacing:.5px;}
-.daytab.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.daytab.active{background:var(--navy);color:var(--gold);border-color:var(--navy);}
 .daytab.active .sub{opacity:.75;}
 
 .day-panel{display:none;}
@@ -549,7 +549,7 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 
 /* ─── Cartes de session — format premium ──────────────────── */
 .blk{position:relative;background:var(--brand-card);border:1px solid var(--brand-line);border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(7,54,118,.05),0 6px 20px rgba(7,54,118,.05);margin-bottom:12px;animation:none;}
-.blk::before{content:'';position:absolute;top:0;bottom:0;left:0;width:3px;background:var(--brand-sky);z-index:1;}
+.blk::before{content:'';position:absolute;top:0;bottom:0;left:0;width:4px;background:var(--blk-accent,var(--brand-sky));z-index:1;}
 .blk.is-live{border-color:var(--brand-line);box-shadow:0 1px 2px rgba(232,36,40,.08),0 6px 20px rgba(232,36,40,.15);animation:none;}
 .blk.is-live::before{background:var(--brand-red);}
 /* ENDED — pas d'opacité globale : elle ferait tomber le contraste du
@@ -573,7 +573,9 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 .blk.is-moved::before{background:var(--brand-navy);}
 
 .blk-head{background:#fff !important;color:var(--brand-navy) !important;padding:14px 18px 10px 22px;gap:10px;flex-wrap:wrap;}
-.blk-head .time{font-family:var(--sans);font-weight:600;font-size:14px;font-variant-numeric:tabular-nums;color:var(--brand-navy);letter-spacing:.2px;}
+.blk-head .time{font-family:var(--sans);font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums;color:var(--blk-ink,#fff);letter-spacing:.2px;background:var(--blk-accent,var(--brand-navy));padding:5px 10px;border-radius:8px;}
+.blk-head .role-tag{font-size:11px;font-weight:600;color:#633806;background:#FAEEDA;padding:2px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;white-space:nowrap;}
+.blk.is-ended .blk-head .time{background:var(--brand-filet-end);color:#667080;}
 .blk-head .ttl{font-family:var(--sans);font-weight:500;font-size:16px;line-height:1.35;color:var(--brand-card-title);}
 .blk-head .dur,.blk-head .fmt{background:transparent;color:var(--brand-ink2);font-weight:500;font-size:12px;padding:0;letter-spacing:.2px;}
 .blk-body{padding:2px 6px 10px;}
@@ -1307,19 +1309,19 @@ const DAYS = [
   title:{fr:'Soirée Leadership',en:'Leadership Night'},
   meta:{fr:'Jeudi 3 Septembre · VIP & Dignitaires',en:'Thursday September 3 · VIP & Dignitaries'},
   blocks:[
-   {sid:'jeu-cocktail',t:'17:00 – 18:30',ttl:{fr:'Cocktail VIP + Zone Jeunesse',en:'VIP Cocktail + Youth Zone'},dur:'90 min',g:C.emeraldG,
+   {sid:'jeu-cocktail',t:'17:00 – 18:30',ttl:{fr:'Cocktail VIP + Zone Jeunesse',en:'VIP Cocktail + Youth Zone'},dur:'90 min',g:C.tealG,
     solo:[['—',{fr:'Accueil des délégués VIP · Zone Jeunesse en parallèle (Zone B)',en:'VIP delegate welcome · Youth Zone in parallel (Zone B)'}]]},
    {sid:'jeu-diner',t:'18:30 – 18:43',ttl:{fr:'Dîner Leadership — Ouverture',en:'Leadership Dinner — Opening'},dur:'13 min',g:C.slateG,
     solo:[['—',{fr:'Service du dîner pour leaders, présidents d\u2019associations et dignitaires',en:'Dinner service for leaders, association presidents and dignitaries'}]]},
-   {sid:'jeu-pres',t:'18:43 – 18:48',ttl:{fr:'Adresse du Président',en:'President\u2019s Address'},dur:'5 min',g:C.midnightG,
+   {sid:'jeu-pres',t:'18:43 – 18:48',ttl:{fr:'Adresse du Président',en:'President\u2019s Address'},dur:'5 min',g:C.goldG,
     solo:[[{fr:'Président ABC',en:'ABC President'},{fr:'Discours d\u2019ouverture officiel de la convention',en:'Official opening address of the convention'}]]},
-   {sid:'jeu-assoc',t:'18:48 – 19:03',ttl:{fr:'Présentations des Associations',en:'Association Presentations'},dur:'15 min',g:C.skyG,
+   {sid:'jeu-assoc',t:'18:48 – 19:03',ttl:{fr:'Présentations des Associations',en:'Association Presentations'},dur:'15 min',g:C.tealG,
     solo:[[{fr:'10 associations',en:'10 associations'},{fr:'90 secondes chacune · Roll-call communautaire',en:'90 seconds each · Community roll-call'}]]},
-   {sid:'jeu-sponsor',t:'19:03 – 20:01',ttl:{fr:'Mot du Sponsor Platine',en:'Platinum Sponsor Address'},dur:'58 min',g:C.steelG,
+   {sid:'jeu-sponsor',t:'19:03 – 20:01',ttl:{fr:'Mot du Sponsor Platine',en:'Platinum Sponsor Address'},dur:'58 min',g:C.tealG,
     solo:[[{fr:'Sponsor Platine',en:'Platinum Sponsor'},{fr:'Allocution du sponsor principal',en:'Main sponsor address'}]]},
-   {sid:'jeu-trad',t:'20:01 – 20:24',ttl:{fr:'Ensemble Traditionnel',en:'Traditional Ensemble'},dur:'23 min',g:C.plumG,
+   {sid:'jeu-trad',t:'20:01 – 20:24',ttl:{fr:'Ensemble Traditionnel',en:'Traditional Ensemble'},dur:'23 min',g:C.tealG,
     solo:[['—',{fr:'Performance culturelle live · Musique et danse traditionnelle Bamiléké',en:'Live cultural performance · Traditional Bamiléké music and dance'}]]},
-   {sid:'jeu-artiste',t:'20:24 – 21:00',ttl:{fr:'Artiste Contemporain',en:'Contemporary Artist'},dur:'36 min',g:C.magentaG,
+   {sid:'jeu-artiste',t:'20:24 – 21:00',ttl:{fr:'Artiste Contemporain',en:'Contemporary Artist'},dur:'36 min',g:C.goldG,
     solo:[['—',{fr:'Performance artistique contemporaine · Clôture de la soirée',en:'Contemporary artistic performance · Evening close'}]]},
   ]},
 
@@ -1329,12 +1331,12 @@ const DAYS = [
   meta:{fr:'Vendredi 4 Septembre · 10h00 – 16h00 · JOURNÉE DÉTAILLÉE',en:'Friday September 4 · 10:00 AM – 4:00 PM · DETAILED DAY'},
   isExpo:true,
   blocks:[
-   {sid:'ven-welcome',t:'10:00 – 10:10',ttl:{fr:'Welcome & Opening Panel — Kickoff',en:'Welcome & Opening Panel — Kickoff'},dur:'10 min',g:C.emeraldG,
+   {sid:'ven-welcome',t:'10:00 – 10:10',ttl:{fr:'Welcome & Opening Panel — Kickoff',en:'Welcome & Opening Panel — Kickoff'},dur:'10 min',g:C.goldG,
     solo:[['Edwige',{fr:'Introduction · Insights clés pour donner le ton',en:'Event introduction · Key insights to set the tone'}]]},
    {sid:'ven-talk',t:'10:10 – 10:25',ttl:{fr:'Inspirational Talk',en:'Inspirational Talk'},dur:'15 min',g:C.goldG,
     solo:[['Stephanie Mbida',{fr:'Lien avec les objectifs et attentes de l\u2019événement',en:'Link to goals and expectations from the event'}]]},
    {sid:'ven-r1',t:'10:30 – 11:15',ttl:{fr:'Workshops Round #1 — 7 salles parallèles',en:'Workshops Round #1 — 7 parallel rooms'},
-    fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.indigoG,
+    fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.tealG,
     rooms:[
      {r:'Room 1',who:'Stephanie Mbida',topic:{fr:'Éducation financière',en:'Financial Education'},
       sub:{fr:'Prendre le contrôle de ses finances',en:'Taking control of your finances'},
@@ -1365,18 +1367,18 @@ const DAYS = [
       expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
       take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
     ]},
-   {sid:'ven-brunch',t:'11:15 – 12:45',ttl:{fr:'Brunch + Booth Exploration + Networking',en:'Brunch + Booth Exploration + Networking'},dur:'90 min',g:C.steelG,
+   {sid:'ven-brunch',t:'11:15 – 12:45',ttl:{fr:'Brunch + Booth Exploration + Networking',en:'Brunch + Booth Exploration + Networking'},dur:'90 min',g:C.slateG,
     solo:[['—',{fr:'Visite des exposants + Stand Up Networking · Mentorship Hub · Scavenger Hunt',en:'Visit exhibitors + Stand Up Networking · Mentorship Hub · Scavenger Hunt'},true]]},
    {sid:'ven-kidney', parallel:true, t:'12:00 – 16:00', tEnglish:'12:00 PM – 4:00 PM',
     org:'National Kidney Foundation of Illinois', van:'KidneyMobile',
     services:['Blood pressure','Blood glucose','HbA1c','BMI','Waist circumference','Urinalysis','Blood draw (si nécessaire)']},
-   {sid:'ven-midpoint',t:'12:45 – 12:50',ttl:{fr:'Midpoint Reconnection',en:'Midpoint Reconnection'},dur:'5 min',g:C.orangeG,
+   {sid:'ven-midpoint',t:'12:45 – 12:50',ttl:{fr:'Midpoint Reconnection',en:'Midpoint Reconnection'},dur:'5 min',g:C.tealG,
     solo:[['Dr Calvin',{fr:'Recentrer l\u2019énergie et les points clés',en:'Re-align energy and key takeaways'}]]},
    {sid:'ven-pitch',t:'12:50 – 1:50 PM',ttl:{fr:'Business Growth Pitch Session',en:'Business Growth Pitch Session'},
-    fmt:{fr:'10 min + 5 min Q&R',en:'10 min + 5 min Q&A'},g:C.crimsonG,
+    fmt:{fr:'10 min + 5 min Q&R',en:'10 min + 5 min Q&A'},g:C.tealG,
     pitch:[['12:50 – 1:05','Pitch 1'],['1:05 – 1:20','Pitch 2'],['1:20 – 1:35','Pitch 3'],['1:35 – 1:50','Pitch 4']]},
    {sid:'ven-r2',t:'1:55 – 2:40 PM',ttl:{fr:'Workshops Round #2 — 7 salles parallèles',en:'Workshops Round #2 — 7 parallel rooms'},
-    fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.cyanG,
+    fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.tealG,
     rooms:[
      {r:'Room 1',who:'Mr Tenku',topic:{fr:'Se réinventer à 40 ans et au-delà',en:'Reinventing Yourself at 40 and Beyond'},
       sub:{fr:'Réussir sa reconversion',en:'Successfully pivoting your career'},
@@ -1407,7 +1409,7 @@ const DAYS = [
       expect:{fr:['En attente du Directeur'],en:['Pending from the Director']},
       take:{fr:['En attente du Directeur'],en:['Pending from the Director']}},
     ]},
-   {sid:'ven-close',t:'2:40 – 4:00 PM',ttl:{fr:'Booth Exploration + Networking — Clôture',en:'Booth Exploration + Networking — Close'},dur:'80 min',g:C.slateG,
+   {sid:'ven-close',t:'2:40 – 4:00 PM',ttl:{fr:'Booth Exploration + Networking — Clôture',en:'Booth Exploration + Networking — Close'},dur:'80 min',g:C.goldG,
     solo:[['—',{fr:'Visite des exposants + Stand Up Networking · Clôture de la journée Business',en:'Visit exhibitors + Stand Up Networking · Close of the Business day'},true]]},
   ],
   note:{fr:'sujets de Room 6/7 (Round #1) et Room 5/6/7 (Round #2) réservés — intervenants et créneaux fixés. Les 4 Pitchs ont leurs créneaux posés, en attente des noms.',
@@ -1421,9 +1423,9 @@ const DAYS = [
   title:{fr:'Symposium & Gala Night',en:'Symposium & Gala Night'},
   meta:{fr:'Samedi 5 Septembre · Symposium 9h00–16h00 (parallèle Business Expo) · Soirée de Gala',en:'Saturday September 5 · Symposium 9:00 AM–4:00 PM (concurrent with Business Expo) · Gala Evening'},
   blocks:[
-   {sid:'sam-mg',t:'09:00 – 10:00',ttl:{fr:'Accueil & Réseautage',en:'Meet & Greet'},dur:'60 min',g:C.skyG,
+   {sid:'sam-mg',t:'09:00 – 10:00',ttl:{fr:'Accueil & Réseautage',en:'Meet & Greet'},dur:'60 min',g:C.slateG,
     solo:[['—',{fr:'Arrivée, enregistrement et réseautage',en:'Arrival, registration and networking'}]]},
-   {sid:'sam-ouv',t:'10:00 – 10:45',ttl:{fr:'Cérémonie d\u2019Ouverture',en:'Opening Ceremony'},dur:'45 min',g:C.midnightG,
+   {sid:'sam-ouv',t:'10:00 – 10:45',ttl:{fr:'Cérémonie d\u2019Ouverture',en:'Opening Ceremony'},dur:'45 min',g:C.goldG,
     solo:[
      [{fr:'Prière & Hymnes',en:'Prayer & Anthems'},{fr:'Prière d\u2019ouverture · Hymnes nationaux (États-Unis, Canada, Cameroun)',en:'Opening prayer · National anthems (USA, Canada, Cameroon)'}],
      [{fr:'Bienvenue',en:'Welcome'},{fr:'Mot des maîtres de cérémonie (Dr Rodrigue & Dr Marius)',en:'Welcome by the Masters of Ceremony (Dr Rodrigue & Dr Marius)'}],
@@ -1436,11 +1438,11 @@ const DAYS = [
      [{fr:'Keynote',en:'Keynote'},{fr:'Discours d\u2019ouverture · Martha Shey',en:'Opening keynote · Martha Shey'}],
      [{fr:'Panélistes I',en:'Panel I'},{fr:'Présentation des panélistes (Dr Rodrigue) : Martha Shey, Dr Severin Kezeu, Cyrille Bojiko, Stephanie Mbida, Angelle Kwemo',en:'Panelist introductions (Dr Rodrigue): Martha Shey, Dr Severin Kezeu, Cyrille Bojiko, Stephanie Mbida, Angelle Kwemo'}]
     ]},
-   {sid:'sam-pan1',t:'11:10 – 12:00',ttl:{fr:'Panel I — Économie & Entrepreneuriat',en:'Panel I — Economy & Entrepreneurship'},dur:'50 min',g:C.cobaltG,
+   {sid:'sam-pan1',t:'11:10 – 12:00',ttl:{fr:'Panel I — Économie & Entrepreneuriat',en:'Panel I — Economy & Entrepreneurship'},dur:'50 min',g:C.tealG,
     solo:[['—',{fr:'Développement économique, entrepreneuriat & investissement · Panel interactif avec les intervenants #1 à 3 · Discussion modérée · Questions du public et recommandations',en:'Interactive panel with Keynote Speakers #1–3 · Moderated discussion · Audience Q&A and recommendations'}]]},
    {sid:'sam-cof1',t:'12:00 – 12:15',ttl:{fr:'Pause Café',en:'Coffee Break'},dur:'15 min',g:C.slateG,
     solo:[['—',{fr:'Pause',en:'Break'}]]},
-   {sid:'sam-spons',t:'12:15 – 12:40',ttl:{fr:'Vitrine Partenaires & Sponsors',en:'Partners & Sponsors Showcase'},dur:'25 min',g:C.bronzeG,
+   {sid:'sam-spons',t:'12:15 – 12:40',ttl:{fr:'Vitrine Partenaires & Sponsors',en:'Partners & Sponsors Showcase'},dur:'25 min',g:C.tealG,
     solo:[
      [{fr:'Platine',en:'Platinum'},{fr:'Message du sponsor platine · CCA Bank',en:'Platinum sponsor message · CCA Bank'}],
      [{fr:'Or',en:'Gold'},{fr:'Message du sponsor or',en:'Gold sponsor message'}],
@@ -1453,33 +1455,33 @@ const DAYS = [
      [{fr:'Keynote',en:'Keynote'},{fr:'Discours · Dr Severin Kezeu',en:'Keynote · Dr Severin Kezeu'}],
      [{fr:'Panélistes II',en:'Panel II'},{fr:'Présentation des panélistes (Dr Marius Fegaing) : Eddy Boutcheko, Frank Stephane Achoundong, Captain Winfrey, Dr Carmen Fotso, Madame Sonia, Dr Djoko',en:'Panelist introduction (Dr Marius Fegaing): Eddy Boutcheko, Frank Stephane Achoundong, Captain Winfrey, Dr Carmen Fotso, Madame Sonia, Dr Djoko'}]
     ]},
-   {sid:'sam-pan2',t:'13:00 – 13:40',ttl:{fr:'Panel II — Leadership & Jeunesse',en:'Panel II — Leadership & Youth'},dur:'40 min',g:C.indigoG,
+   {sid:'sam-pan2',t:'13:00 – 13:40',ttl:{fr:'Panel II — Leadership & Jeunesse',en:'Panel II — Leadership & Youth'},dur:'40 min',g:C.tealG,
     solo:[['—',{fr:'Leadership, culture, jeunesse & l\u2019avenir de la diaspora Bamiléké · Panel interactif · Discussion modérée · Questions du public et recommandations',en:'Interactive panel · Moderated discussion · Audience Q&A and recommendations'}]]},
    {sid:'sam-cof2',t:'13:40 – 14:00',ttl:{fr:'Pause Café',en:'Coffee Break'},dur:'20 min',g:C.slateG,
     solo:[['—',{fr:'Pause',en:'Break'}]]},
-   {sid:'sam-roi',t:'14:00 – 14:30',ttl:{fr:'Discours de Sa Majesté',en:'Address by His Majesty'},dur:'30 min',g:C.plumG,
+   {sid:'sam-roi',t:'14:00 – 14:30',ttl:{fr:'Discours de Sa Majesté',en:'Address by His Majesty'},dur:'30 min',g:C.goldG,
     solo:[['—',{fr:'Adresse royale à la convention',en:'Royal address to the convention'}]]},
-   {sid:'sam-rec',t:'14:30 – 14:40',ttl:{fr:'Autorités Traditionnelles',en:'Traditional Rulers'},dur:'10 min',g:C.cyanG,
+   {sid:'sam-rec',t:'14:30 – 14:40',ttl:{fr:'Autorités Traditionnelles',en:'Traditional Rulers'},dur:'10 min',g:C.tealG,
     solo:[['—',{fr:'Chefs traditionnels, invités de marque, leaders communautaires & dignitaires',en:'Traditional rulers, distinguished guests, community leaders & dignitaries'}]]},
-   {sid:'sam-board',t:'14:40 – 15:00',ttl:{fr:'Nouveau Conseil & Résolutions',en:'Newly Elected Board & Resolutions'},dur:'20 min',g:C.emeraldG,
+   {sid:'sam-board',t:'14:40 – 15:00',ttl:{fr:'Nouveau Conseil & Résolutions',en:'Newly Elected Board & Resolutions'},dur:'20 min',g:C.tealG,
     solo:[['—',{fr:'Présentation des membres du conseil nouvellement élus et autres résolutions',en:'Presentation of newly elected board members and other resolutions'}]]},
-   {sid:'sam-host',t:'15:00 – 15:45',ttl:{fr:'Sélection de la Ville Hôte 2027',en:'2027 Host City Selection'},dur:'45 min',g:C.limeG,
+   {sid:'sam-host',t:'15:00 – 15:45',ttl:{fr:'Sélection de la Ville Hôte 2027',en:'2027 Host City Selection'},dur:'45 min',g:C.tealG,
     solo:[
      [{fr:'Processus',en:'Process'},{fr:'Présentation du processus électoral par le Comité Électoral ABC',en:'Overview of the election process by the ABC Election Committee'}],
      [{fr:'Candidatures',en:'Candidates'},{fr:'Présentations des villes candidates (5 min max par ville)',en:'Candidate host-city presentations (max 5 min each)'}],
      [{fr:'Vote',en:'Vote'},{fr:'Vote des délégués, dépouillement & certification des résultats',en:'Delegate voting, vote counting & certification of results'}]
     ]},
-   {sid:'sam-annc',t:'15:45 – 16:00',ttl:{fr:'Annonce 2027 & Clôture',en:'2027 Announcement & Closing'},dur:'15 min',g:C.forestG,
+   {sid:'sam-annc',t:'15:45 – 16:00',ttl:{fr:'Annonce 2027 & Clôture',en:'2027 Announcement & Closing'},dur:'15 min',g:C.goldG,
     solo:[['—',{fr:'Annonce officielle de la ville hôte 2027 · Remarques d\u2019acceptation · Mots de clôture · Photo de groupe officielle',en:'Official announcement of the 2027 host city · Acceptance remarks · Closing remarks · Official group photo'}]]},
    {sid:'sam-tbc',t:'16:00 – 19:30',ttl:{fr:'Programme à confirmer',en:'Program To Be Confirmed'},dur:{fr:'À venir',en:'Upcoming'},g:C.slateG,
     solo:[['—',{fr:'Créneau en cours de programmation · Éléments attendus du comité',en:'Slot being programmed · Details awaited from the committee'},true]]},
-   {sid:'sam-gala',t:'19:30 – 21:03',ttl:{fr:'GALA — Tapis Rouge',en:'GALA — Red Carpet'},dur:{fr:'Gala',en:'Gala'},g:C.plumG,
+   {sid:'sam-gala',t:'19:30 – 21:03',ttl:{fr:'GALA — Tapis Rouge',en:'GALA — Red Carpet'},dur:{fr:'Gala',en:'Gala'},g:C.goldG,
     solo:[['—',{fr:'Cocktail tapis rouge · Dîner de gala · Remise des prix officiels',en:'Red carpet cocktail · Gala dinner · Official awards'}]]},
    {sid:'sam-spok',t:'21:03 – 21:08',ttl:{fr:'Spoken Word',en:'Spoken Word'},dur:'5 min',g:C.sacredG,sacred:true,
     solo:[['—',{fr:'Moment sacré · Silence total demandé · Le MCO reste hors scène',en:'Sacred moment · Total silence requested · MCO stays offstage'}]]},
    {sid:'sam-decl',t:'21:08 – 21:15',ttl:{fr:'Déclaration Jeunesse',en:'Youth Declaration'},dur:'7 min',g:C.sacredG,sacred:true,
     solo:[['—',{fr:'Moment sacré · La jeunesse s\u2019adresse à la communauté',en:'Sacred moment · The youth address the community'}]]},
-   {sid:'sam-vede',t:'21:15 – 22:15',ttl:{fr:'Artiste Vedette',en:'Featured Artist'},dur:'60 min',g:C.magentaG,
+   {sid:'sam-vede',t:'21:15 – 22:15',ttl:{fr:'Artiste Vedette',en:'Featured Artist'},dur:'60 min',g:C.tealG,
     solo:[['—',{fr:'Performance de clôture de la soirée GALA',en:'Closing performance of the GALA evening'}]]},
   ]},
  {id:'dim',date:6,tab:{fr:'Dimanche',en:'Sunday'},tabsub:{fr:'6 Sept · Festival Culturel',en:'Sep 6 · Cultural Festival'},
@@ -1487,19 +1489,19 @@ const DAYS = [
   title:{fr:'Festival Culturel',en:'Cultural Festival'},
   meta:{fr:'Dimanche 6 Septembre · Ouvert à toute la communauté',en:'Sunday September 6 · Open to the whole community'},
   blocks:[
-   {sid:'dim-bus',t:'08:30 – 13:00',ttl:{fr:'Bus Tour + Match de Football',en:'Bus Tour + Soccer Match'},dur:{fr:'Parallèle',en:'Parallel'},g:C.skyG,
+   {sid:'dim-bus',t:'08:30 – 13:00',ttl:{fr:'Bus Tour + Match de Football',en:'Bus Tour + Soccer Match'},dur:{fr:'Parallèle',en:'Parallel'},g:C.tealG,
     solo:[['—',{fr:'Deux activités en parallèle · Tour de ville en bus ou match de football amical',en:'Two parallel activities · City bus tour or friendly soccer match'}]]},
-   {sid:'dim-fest',t:'13:00 – 15:00',ttl:{fr:'Festival Communautaire — OUVERT À TOUS',en:'Community Festival — OPEN TO ALL'},dur:'120 min',g:C.emeraldG,
+   {sid:'dim-fest',t:'13:00 – 15:00',ttl:{fr:'Festival Communautaire — OUVERT À TOUS',en:'Community Festival — OPEN TO ALL'},dur:'120 min',g:C.tealG,
     solo:[['—',{fr:'Le Festival ouvre à toute la communauté de Chicago · Stands · Animations · Restauration',en:'The Festival opens to the whole Chicago community · Booths · Activities · Food'}]]},
-   {sid:'dim-danse',t:'15:00 – 16:00',ttl:{fr:'Défilé de Danses + Enseignement MCO',en:'Dance Parade + MCO Teaching'},dur:'60 min',g:C.violetG,
+   {sid:'dim-danse',t:'15:00 – 16:00',ttl:{fr:'Défilé de Danses + Enseignement MCO',en:'Dance Parade + MCO Teaching'},dur:'60 min',g:C.tealG,
     solo:[['—',{fr:'Défilé des groupes de danse traditionnelle · Enseignement de pas pour le public',en:'Traditional dance groups parade · Step teaching for the audience'}]]},
-   {sid:'dim-conc',t:'16:00 – 17:05',ttl:{fr:'Concert Vedette',en:'Featured Concert'},dur:'65 min',g:C.magentaG,
+   {sid:'dim-conc',t:'16:00 – 17:05',ttl:{fr:'Concert Vedette',en:'Featured Concert'},dur:'65 min',g:C.goldG,
     solo:[['—',{fr:'Concert final du Festival Communautaire',en:'Final concert of the Community Festival'}]]},
-   {sid:'dim-clot',t:'17:05 – 17:23',ttl:{fr:'Cérémonie de Clôture',en:'Closing Ceremony'},dur:'18 min',g:C.midnightG,
+   {sid:'dim-clot',t:'17:05 – 17:23',ttl:{fr:'Cérémonie de Clôture',en:'Closing Ceremony'},dur:'18 min',g:C.goldG,
     solo:[['—',{fr:'Discours de clôture officielle de la convention',en:'Official closing address of the convention'}]]},
    {sid:'dim-cercle',t:'17:23 – 17:45',ttl:{fr:'Cercle d\u2019Unité',en:'Unity Circle'},dur:'22 min',g:C.sacredG,sacred:true,
     solo:[['—',{fr:'Moment sacré de clôture · Toute la communauté en cercle · Ne pas abréger',en:'Sacred closing moment · The whole community in a circle · Do not shorten'}]]},
-   {sid:'dim-fin',t:'17:45 – 18:00',ttl:{fr:'Fin Officielle',en:'Official End'},dur:'15 min',g:C.forestG,
+   {sid:'dim-fin',t:'17:45 – 18:00',ttl:{fr:'Fin Officielle',en:'Official End'},dur:'15 min',g:C.goldG,
     solo:[['—',{fr:'Mot de remerciement final · Fin officielle de la Convention 2026',en:'Final word of thanks · Official end of the 2026 Convention'}]]},
   ]},
 ];
@@ -1723,10 +1725,12 @@ function renderBlock(b, dayDate){
   const sacredTag = b.sacred ? '<span class="sacred-tag">✦</span>' : '';
   const badge = (st!=='none') ? statusBadge(st, b.sid) : '';
   const stateCls = st==='live'?'is-live':st==='cancel'?'is-cancel':st==='moved'?'is-moved':st==='ended'?'is-ended':'';
-  return `<div class="blk ${stateCls}">
+  const gold=(b.g||'').includes('gold');
+  const roleTag=gold?`<span class="role-tag">${LANG==='fr'?'Temps fort':'Highlight'}</span>`:'';
+  return `<div class="blk ${stateCls}" style="--blk-accent:${b.g};--blk-ink:${gold?'#412402':'#fff'}">
     <div class="blk-head" style="background:${b.g}">
       <span class="time">${b.t}</span>
-      <span class="ttl">${L(b.ttl)}${sacredTag}</span>
+      <span class="ttl">${L(b.ttl)}${sacredTag}${roleTag}</span>
       ${badge}${right}
     </div>
     <div class="blk-body">${inner}</div>
