@@ -538,6 +538,22 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 /* 4 · GROW — outline marine avec filet bas 4 px (plus de rouge) */
 .expo-pillars > .expo-pillar:nth-child(4){background:#fff !important;border:1.5px solid var(--brand-navy);border-bottom-width:4px;}
 .pillars-hint{color:var(--brand-ink2);}
+.expo-pillar{position:relative;overflow:hidden;transition:transform .2s ease;}
+.expo-pillar:hover{transform:translateY(-2px);}
+
+.expo-pillar > *{position:relative;z-index:1;}
+.expo-pillar{transform-origin:center;animation:pilHeart 2s ease-in-out infinite;}
+.expo-pillars > .expo-pillar:nth-child(1){animation-delay:0s;}
+.expo-pillars > .expo-pillar:nth-child(2){animation-delay:.5s;}
+.expo-pillars > .expo-pillar:nth-child(3){animation-delay:1s;}
+.expo-pillars > .expo-pillar:nth-child(4){animation-delay:1.5s;}
+@keyframes pilHeart{0%,40%,100%{transform:scale(1);box-shadow:0 1px 2px rgba(7,54,118,.05);}10%{transform:scale(1.04);box-shadow:0 4px 14px rgba(7,54,118,.18);}20%{transform:scale(1);box-shadow:0 1px 2px rgba(7,54,118,.05);}25%{transform:scale(1.03);box-shadow:0 3px 10px rgba(7,54,118,.14);}}
+@media (prefers-reduced-motion:reduce){.expo-pillar{animation:none;}}
+.expo-pillar.is-picked{background:var(--brand-navy) !important;color:var(--gold) !important;border-color:var(--brand-navy) !important;box-shadow:0 4px 14px rgba(7,54,118,.25);}
+.expo-pillar.is-picked::after{animation:none;opacity:0;}
+.expo-pillar.is-picked .ds{color:var(--gold) !important;opacity:.85;}
+.expo-pillar.is-picked .more{background:rgba(201,162,39,.2) !important;color:var(--gold) !important;}
+@media (prefers-reduced-motion:reduce){.expo-pillar::after{animation:none;opacity:0;}}
 
 /* ─── Modal (piliers) ──────────────────────────────────────── */
 .modal{background:#fff;}
@@ -1778,6 +1794,9 @@ function renderDay(d){
 
 // ── PILLAR MODAL ──────────────────────────────────
 function openPillar(key){
+  document.querySelectorAll('.expo-pillar').forEach(el=>el.classList.remove('is-picked'));
+  const btn = document.querySelector(`.expo-pillar[onclick*="'${key}'"]`);
+  if(btn) btn.classList.add('is-picked');
   const p = PILLARS.find(x=>x.key===key);
   if(!p) return;
   const points = L(p.points).map(pt=>`<li><span class="dot" style="background:${p.color}"></span>${pt}</li>`).join('');
