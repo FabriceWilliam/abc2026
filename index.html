@@ -538,6 +538,58 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 /* 4 · GROW — outline marine avec filet bas 4 px (plus de rouge) */
 .expo-pillars > .expo-pillar:nth-child(4){background:#fff !important;border:1.5px solid var(--brand-navy);border-bottom-width:4px;}
 .pillars-hint{color:var(--brand-ink2);}
+
+.ndop-band{height:48px;background:url('img/ndop-pattern.jpg') center/160px auto repeat;}
+.ndop-side{position:absolute;top:0;right:0;bottom:0;width:36px;background:url('img/ndop-pattern.jpg') center top/90px auto repeat-y;opacity:.85;}
+.ndop-bandeau{background:linear-gradient(rgba(7,54,118,.72),rgba(7,54,118,.72)),url('img/ndop-pattern.jpg') center/160px auto repeat;}
+.ndop-filet{background:url('img/ndop-pattern.jpg') center bottom/60px 3px no-repeat;height:3px;}
+
+.ndop-title-frame{position:relative;display:inline-block;padding:4px 12px;margin:10px auto 0;max-width:90%;background:linear-gradient(#fff,#fff) padding-box,url('img/ndop-pattern.jpg') center/100px auto repeat border-box;border:10px solid transparent;border-radius:6px;animation:ndopRotate 12s linear infinite;}
+.ndop-title-wrap{display:block;text-align:center;margin-top:6px;}
+@media (max-width:480px){
+  .ndop-title-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    overflow:hidden !important;
+  }
+
+  .ndop-title-frame{
+    max-width:100% !important;
+    width:auto !important;
+    box-sizing:border-box !important;
+    white-space:normal !important;
+  }
+}
+@media (max-width:480px){
+  .day-body h2,
+  .program-day-title,
+  h2{
+    font-size:1.05em !important;
+    line-height:1.08 !important;
+  }
+  .ndop-title-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box;
+  }
+  .ndop-title-frame{
+    display:inline-block;
+    max-width:100% !important;
+    width:auto !important;
+    box-sizing:border-box;
+    border-width:5px;
+    padding:2px 6px;
+    background-size:55px auto,55px auto;
+    white-space:normal !important;
+  }
+}
+@media (max-width:480px){.day-body h2,.program-day-title,h2{font-size:1.4em !important;line-height:1.15;}.ndop-title-frame{border-width:8px;padding:3px 10px;background-size:80px auto,80px auto;}}
+@media (min-width:768px){.ndop-title-frame{padding:6px 16px;font-size:1.15em;border-width:14px;background-size:140px auto,140px auto;}}
+.ndop-title-inner{display:inline-block;animation:ndopCounterRotate 12s linear infinite;}
+@keyframes ndopRotate{to{background-position:600px center;}}
+@keyframes ndopCounterRotate{to{background-position:0 0;}}
+@media (prefers-reduced-motion:reduce){.ndop-title-frame{animation:none;}}
 .expo-pillar{position:relative;overflow:hidden;transition:transform .2s ease;}
 .expo-pillar:hover{transform:translateY(-2px);}
 
@@ -1776,7 +1828,7 @@ function renderDay(d){
   let html = `<div class="wrap">
     <div class="day-hero">
       <div class="theme-lbl">${UI.themeLabel[LANG]}</div>
-      <h2>${L(d.title)}</h2>
+      <h2>${d.id==='ven'?`Business Expo &amp;<span class="ndop-title-wrap"><span class="ndop-title-frame"><span class="ndop-title-inner">Cultural Night</span></span></span>`:L(d.title)}</h2>
       <div class="theme-quote">« ${L(d.theme)} »</div>
       <div class="day-meta">${L(d.meta)}</div>
     </div>`;
