@@ -547,44 +547,10 @@ body{background:var(--brand-paper);color:var(--brand-navy);}
 .ndop-title-frame{position:relative;display:inline-block;padding:4px 12px;margin:10px auto 0;max-width:90%;background:linear-gradient(#fff,#fff) padding-box,url('img/ndop-pattern.jpg') center/100px auto repeat border-box;border:10px solid transparent;border-radius:6px;animation:ndopRotate 12s linear infinite;}
 .ndop-title-wrap{display:block;text-align:center;margin-top:6px;}
 @media (max-width:480px){
-  .ndop-title-wrap{
-    width:100% !important;
-    max-width:100% !important;
-    box-sizing:border-box !important;
-    overflow:hidden !important;
-  }
-
-  .ndop-title-frame{
-    max-width:100% !important;
-    width:auto !important;
-    box-sizing:border-box !important;
-    white-space:normal !important;
-  }
+  .day-body h2,.program-day-title,h2{font-size:1.4em !important;line-height:1.15;}
+  .ndop-title-wrap{width:100% !important;max-width:100% !important;box-sizing:border-box;overflow:hidden;}
+  .ndop-title-frame{display:inline-block;max-width:100% !important;width:auto !important;box-sizing:border-box;white-space:normal !important;border-width:8px;padding:3px 10px;background-size:80px auto,80px auto;}
 }
-@media (max-width:480px){
-  .day-body h2,
-  .program-day-title,
-  h2{
-    font-size:1.05em !important;
-    line-height:1.08 !important;
-  }
-  .ndop-title-wrap{
-    width:100% !important;
-    max-width:100% !important;
-    box-sizing:border-box;
-  }
-  .ndop-title-frame{
-    display:inline-block;
-    max-width:100% !important;
-    width:auto !important;
-    box-sizing:border-box;
-    border-width:5px;
-    padding:2px 6px;
-    background-size:55px auto,55px auto;
-    white-space:normal !important;
-  }
-}
-@media (max-width:480px){.day-body h2,.program-day-title,h2{font-size:1.4em !important;line-height:1.15;}.ndop-title-frame{border-width:8px;padding:3px 10px;background-size:80px auto,80px auto;}}
 @media (min-width:768px){.ndop-title-frame{padding:6px 16px;font-size:1.15em;border-width:14px;background-size:140px auto,140px auto;}}
 .ndop-title-inner{display:inline-block;animation:ndopCounterRotate 12s linear infinite;}
 @keyframes ndopRotate{to{background-position:600px center;}}
