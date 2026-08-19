@@ -1475,8 +1475,46 @@ const DAYS = [
   note:{fr:'sujets de Room 6/7 (Round #1) et Room 5/6/7 (Round #2) réservés — intervenants et créneaux fixés. Les 3 Pitchs ont leurs créneaux posés, en attente des noms.',
         en:'topics for Room 6/7 (Round #1) and Room 5/6/7 (Round #2) reserved — speakers and slots fixed. The 4 Pitches have their slots set, awaiting names.'},
   verify:{fr:'✓ Chrono vérifié : 10h00 à 16h00 exactement (360 min)',en:'✓ Timing verified: 10:00 AM to 4:00 PM exactly (360 min)'},
-  evening:{t:'19:30 – 00:00',ttl:{fr:'Cultural Night',en:'Cultural Night'},dur:{fr:'Soirée',en:'Evening'},g:C.violetG,
-    solo:[['—',{fr:'Tapis rouge · Cocktail · Défilé de mode jeunesse · Concours de danse · Artiste vedette',en:'Red carpet · Cocktail · Youth fashion show · Dance contest · Featured artist'}]]}},
+  evening:[
+   {sid:'ven-arr',t:'18:30 – 18:55',ttl:{fr:'Arrivée & Enregistrement des Invités',en:'Guest Arrival & Check-In'},dur:'25 min',g:C.slateG,
+    solo:[['—',{fr:'Musique traditionnelle & animation d\u2019accueil',en:'Traditional music & welcoming animation'}]]},
+   {sid:'ven-open',t:'19:00 – 19:05',ttl:{fr:'OUVERTURE CÉRÉMONIALE OFFICIELLE',en:'OFFICIAL CEREMONIAL OPENING'},dur:'5 min',g:C.goldG,
+    solo:[['—',{fr:'Tambours, instruments traditionnels & procession d\u2019ouverture',en:'Drums, traditional instruments & opening procession'}]]},
+   {sid:'ven-entree',t:'19:05 – 19:20',ttl:{fr:'Grande Entrée Cérémoniale de Leurs Majestés / Chefs Traditionnels',en:'Grand Ceremonial Entrance of Their Majesties / Traditional Leaders'},dur:'15 min',g:C.goldG,
+    solo:[['—',{fr:'Procession royale menée par l\u2019animation traditionnelle',en:'Royal procession led by traditional animation'}]]},
+   {sid:'ven-prayer',t:'19:20 – 19:25',ttl:{fr:'Prière d\u2019Ouverture / Bénédiction Traditionnelle',en:'Opening Prayer / Traditional Blessing'},dur:'5 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-welcome',t:'19:25 – 19:35',ttl:{fr:'Mot de Bienvenue Officiel',en:'Official Welcome Remarks'},dur:'10 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-recog',t:'19:35 – 19:45',ttl:{fr:'Reconnaissance de Leurs Majestés, Dignitaires & Invités Spéciaux',en:'Recognition of Their Majesties, Dignitaries & Special Guests'},dur:'10 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-todjom',t:'19:45 – 20:00',ttl:{fr:'TODJOM — Entrée Culturelle & Animation Traditionnelle',en:'TODJOM — Cultural Entrance & Traditional Animation'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-nde',t:'20:00 – 20:15',ttl:{fr:'NDÉ — Entrée Culturelle & Performance Traditionnelle',en:'NDÉ — Cultural Entrance & Traditional Performance'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-hautnkam',t:'20:15 – 20:30',ttl:{fr:'HAUT-NKAM — Entrée Culturelle & Performance Traditionnelle',en:'HAUT-NKAM — Cultural Entrance & Traditional Performance'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-djepola',t:'20:30 – 20:45',ttl:{fr:'DJEPOLA — Entrée Culturelle & Performance Traditionnelle',en:'DJEPOLA — Cultural Entrance & Traditional Performance'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-fusion',t:'20:45 – 21:00',ttl:{fr:'Grande Fusion Culturelle',en:'Grand Cultural Fusion'},dur:'15 min',g:C.goldG,
+    solo:[['—',{fr:'Todjom × Ndé × Haut-Nkam × Djepola',en:'Todjom × Ndé × Haut-Nkam × Djepola'}]]},
+   {sid:'ven-dinner',t:'21:00 – 22:00',ttl:{fr:'DÎNER / BUFFET',en:'DINNER / BUFFET'},dur:'60 min',g:C.slateG,
+    solo:[['—',{fr:'Musique traditionnelle d\u2019ambiance & animation culturelle légère',en:'Traditional background music & light cultural animation'}]]},
+   {sid:'ven-tofgunn',t:'22:00 – 22:15',ttl:{fr:'TOF GUNN — Chant Traditionnel / Performance Culturelle Spéciale',en:'TOF GUNN — Traditional Song / Special Cultural Performance'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-dance',t:'22:15 – 22:30',ttl:{fr:'Danse Traditionnelle & Participation du Public',en:'Traditional Dance & Audience Participation'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-artist',t:'22:30 – 23:15',ttl:{fr:'Artiste Vedette — Grande Entrée & Performance',en:'Featured Artist — Grand Entrance & Performance'},dur:'45 min',g:C.goldG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-anim',t:'23:15 – 23:30',ttl:{fr:'Animation Culturelle Spéciale / Danse Communautaire',en:'Special Cultural Animation / Community Dance'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-dj',t:'23:30 – 12:30 AM',ttl:{fr:'Performance DJ',en:'DJ Performance'},dur:'60 min',g:C.tealG,
+    solo:[['—',{fr:'Classiques bamiléké, Makossa, Bikutsi & hits afro',en:'Bamiléké classics, Makossa, Bikutsi & Afro hits'}]]},
+   {sid:'ven-photo',t:'12:30 AM – 1:00 AM',ttl:{fr:'Moment Photo — Artistes / Rois / Groupes Culturels',en:'Artist / Kings / Cultural Groups Photo Moment'},dur:'30 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'ven-final',t:'1:00 – 3:00 AM',ttl:{fr:'DANSE ! DANSE ! DANSE !',en:'DANCE! DANCE! DANCE!'},dur:'120 min',g:C.goldG,
+    solo:[['—',{fr:'Célébration & DJ',en:'Celebration & DJ'}]]},
+  ]},
 
  {id:'sam',date:5,tab:{fr:'Samedi',en:'Saturday'},tabsub:{fr:'5 Sept · Symposium & Gala',en:'Sep 5 · Symposium & Gala'},
   theme:{fr:'Qui Nous Sommes',en:'Who We Are'},
@@ -1825,7 +1863,8 @@ function renderDay(d){
   html += d.blocks.map(b=> b.parallel ? renderParallelCard(b,d.date) : renderBlock(b,d.date)).join('');
   if(d.evening){
     html += `<div class="evening-band">${UI.eveningBand[LANG]}</div>`;
-    html += renderBlock(d.evening,d.date);
+    const evs = Array.isArray(d.evening) ? d.evening : [d.evening];
+    html += evs.map(b=> renderBlock(b,d.date)).join('');
   }
   html += `</div>`;
   if(d.verify) html += `<div class="verify"><div class="verify-inner">${L(d.verify)}</div></div>`;
