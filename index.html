@@ -1320,11 +1320,11 @@ const PILLARS = [
    points:{fr:['Brunch + stands : 11h15–12h45','Stands + networking : 14h40–16h00','Mentorship Hub pendant le brunch'],
            en:['Brunch + booths: 11:15–12:45','Booths + networking: 2:40–4:00 PM','Mentorship Hub during brunch']}},
   {key:'GROW',ic:'🚀',bg:'var(--red)',color:'var(--red)',nm:'Grow',
-   ds:{fr:'4 pitchs devant investisseurs',en:'4 pitches to investors'},
-   desc:{fr:'Quatre entrepreneurs présentent leur projet entre 12h50 et 13h50. Quinze minutes chacun : dix de pitch, cinq de questions. La salle assiste.',
-         en:'Four entrepreneurs present between 12:50 and 1:50 PM. Fifteen minutes each: ten pitching, five for questions. Open to the room.'},
-   points:{fr:['Pitch 1 : 12h50 · Pitch 2 : 13h05','Pitch 3 : 13h20 · Pitch 4 : 13h35','Format : 10 min + 5 min de questions'],
-           en:['Pitch 1: 12:50 · Pitch 2: 1:05 PM','Pitch 3: 1:20 PM · Pitch 4: 1:35 PM','Format: 10 min + 5 min questions']}},
+   ds:{fr:'3 pitchs devant investisseurs',en:'3 pitches to investors'},
+   desc:{fr:'Trois entrepreneurs présentent leur projet entre 12h50 et 13h35. Quinze minutes chacun : dix de pitch, cinq de questions. La salle assiste.',
+         en:'Three entrepreneurs present between 12:50 and 1:35 PM. Fifteen minutes each: ten pitching, five for questions. Open to the room.'},
+   points:{fr:['Pitch 1 : 12h50 · Pitch 2 : 13h05','Pitch 3 : 13h20','Format : 10 min + 5 min de questions'],
+           en:['Pitch 1: 12:50 · Pitch 2: 1:05 PM','Pitch 3: 1:20 PM','Format: 10 min + 5 min questions']}},
 ];
 
 function L(v){ return (v && typeof v==='object' && 'fr' in v) ? v[LANG] : v; }
@@ -1355,20 +1355,34 @@ const DAYS = [
   title:{fr:'Soirée Leadership',en:'Leadership Night'},
   meta:{fr:'Jeudi 3 Septembre · VIP & Dignitaires',en:'Thursday September 3 · VIP & Dignitaries'},
   blocks:[
-   {sid:'jeu-cocktail',t:'17:00 – 18:30',ttl:{fr:'Cocktail VIP + Zone Jeunesse',en:'VIP Cocktail + Youth Zone'},dur:'90 min',g:C.tealG,
-    solo:[['—',{fr:'Accueil des délégués VIP · Zone Jeunesse en parallèle (Zone B)',en:'VIP delegate welcome · Youth Zone in parallel (Zone B)'}]]},
-   {sid:'jeu-diner',t:'18:30 – 18:43',ttl:{fr:'Dîner Leadership — Ouverture',en:'Leadership Dinner — Opening'},dur:'13 min',g:C.slateG,
-    solo:[['—',{fr:'Service du dîner pour leaders, présidents d\u2019associations et dignitaires',en:'Dinner service for leaders, association presidents and dignitaries'}]]},
-   {sid:'jeu-pres',t:'18:43 – 18:48',ttl:{fr:'Adresse du Président',en:'President\u2019s Address'},dur:'5 min',g:C.goldG,
-    solo:[[{fr:'Président ABC',en:'ABC President'},{fr:'Discours d\u2019ouverture officiel de la convention',en:'Official opening address of the convention'}]]},
-   {sid:'jeu-assoc',t:'18:48 – 19:03',ttl:{fr:'Présentations des Associations',en:'Association Presentations'},dur:'15 min',g:C.tealG,
-    solo:[[{fr:'10 associations',en:'10 associations'},{fr:'90 secondes chacune · Roll-call communautaire',en:'90 seconds each · Community roll-call'}]]},
-   {sid:'jeu-sponsor',t:'19:03 – 20:01',ttl:{fr:'Mot du Sponsor Platine',en:'Platinum Sponsor Address'},dur:'58 min',g:C.tealG,
-    solo:[[{fr:'Sponsor Platine',en:'Platinum Sponsor'},{fr:'Allocution du sponsor principal',en:'Main sponsor address'}]]},
-   {sid:'jeu-trad',t:'20:01 – 20:24',ttl:{fr:'Ensemble Traditionnel',en:'Traditional Ensemble'},dur:'23 min',g:C.tealG,
-    solo:[['—',{fr:'Performance culturelle live · Musique et danse traditionnelle Bamiléké',en:'Live cultural performance · Traditional Bamiléké music and dance'}]]},
-   {sid:'jeu-artiste',t:'20:24 – 21:00',ttl:{fr:'Artiste Contemporain',en:'Contemporary Artist'},dur:'36 min',g:C.goldG,
-    solo:[['—',{fr:'Performance artistique contemporaine · Clôture de la soirée',en:'Contemporary artistic performance · Evening close'}]]},
+   {sid:'jeu-arrival',t:'18:00 – 19:00',ttl:{fr:'Arrivée des Invités',en:'Guest Arrival'},dur:'60 min',g:C.slateG,
+    solo:[['—',{fr:'Musique d\u2019accueil / Réseautage',en:'Welcome music / networking'}]]},
+   {sid:'jeu-open',t:'19:00 – 19:08',ttl:{fr:'Cérémonie d\u2019Ouverture',en:'Opening Ceremony'},dur:'8 min',g:C.goldG,
+    solo:[['—',{fr:'Le MC accueille tous les invités et présente brièvement le Dîner Leadership',en:'MC welcomes all guests and brief introduction of the Leadership Dinner'}]]},
+   {sid:'jeu-entree',t:'19:09 – 19:18',ttl:{fr:'Grande Entrée — Chefs Traditionnels & Dignitaires',en:'Grand Entrance — Traditional Leaders & Dignitaries'},dur:'9 min',g:C.goldG,
+    solo:[['—',{fr:'Le MC annonce l\u2019arrivée des chefs traditionnels',en:'The MC announces the arrival of the traditional leaders'}]]},
+   {sid:'jeu-welcome',t:'19:20 – 19:25',ttl:{fr:'Mot de Bienvenue Officiel',en:'Official Welcome Remarks'},dur:'5 min',g:C.tealG,
+    solo:[['—',{fr:'Mot de bienvenue chaleureux et officiel à Leurs Majestés, chefs traditionnels, dignitaires, officiels gouvernementaux, présidents bamiléké et leaders communautaires',en:'A warm and official welcome to Their Majesties, traditional leaders, distinguished dignitaries, government officials, Bamileke chairmen, community leaders'}]]},
+   {sid:'jeu-committee',t:'19:25 – 19:40',ttl:{fr:'Présentation du Comité Organisateur',en:'Organizing Committee Presentation'},dur:'15 min',g:C.tealG,
+    solo:[['—',{fr:'Le co-directeur exécutif présente les directeurs de comités et conclut sur la jeunesse et le next gen',en:'Co-executive presents the different committees directors and lands on the youth and next gen for his remarks'}]]},
+   {sid:'jeu-youth',t:'19:40 – 19:43',ttl:{fr:'Adresse Jeunesse & Next Gen',en:'Youth & Next Gen Address'},dur:'3 min',g:C.tealG,
+    solo:[['—',{fr:'Aperçu du programme Next Gen & importance de l\u2019initiative jeunesse',en:'Next Gen Program Overview & Importance of youth and next gen initiative'}]]},
+   {sid:'jeu-overview',t:'19:43 – 19:50',ttl:{fr:'Aperçu de l\u2019ABC par le Président',en:'ABC Overview By Chairman'},dur:'7 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'jeu-prayer',t:'19:50 – 19:52',ttl:{fr:'Prière',en:'Prayer'},dur:'2 min',g:C.slateG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'jeu-chef',t:'19:52 – 19:55',ttl:{fr:'Chef Michelle — Présentation du Menu',en:'Chef Michelle — Menu Review'},dur:'3 min',g:C.slateG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'jeu-buffet',t:'20:00 – 21:00',ttl:{fr:'Buffet',en:'Buffet'},dur:'60 min',g:C.slateG,
+    solo:[['—',{fr:'Buffet · Musique · Adresse des sponsors',en:'Buffet/Music/ Sponsor address'}]]},
+   {sid:'jeu-commercial',t:'20:30 – 21:00',ttl:{fr:'Adresse Commerciale (Sponsors)',en:'Commercial Address (Sponsors)'},dur:'30 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'jeu-artiste1',t:'21:00 – 21:10',ttl:{fr:'Performance Artistique',en:'Artist Performance'},dur:'10 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'jeu-awards',t:'21:10 – 21:40',ttl:{fr:'Remise des Distinctions',en:'Recognition Awards'},dur:'30 min',g:C.goldG,
+    solo:[['—',{fr:'',en:''}]]},
+   {sid:'jeu-artiste2',t:'21:40 – 21:50',ttl:{fr:'Performance Artistique',en:'Artist Performance'},dur:'10 min',g:C.tealG,
+    solo:[['—',{fr:'',en:''}]]},
   ]},
 
  {id:'ven',date:4,tab:{fr:'Vendredi',en:'Friday'},tabsub:{fr:'4 Sept · Business Expo',en:'Sep 4 · Business Expo'},
@@ -1378,7 +1392,7 @@ const DAYS = [
   isExpo:true,
   blocks:[
    {sid:'ven-welcome',t:'10:00 – 10:10',ttl:{fr:'Welcome & Opening Panel — Kickoff',en:'Welcome & Opening Panel — Kickoff'},dur:'10 min',g:C.goldG,
-    solo:[['Edwige',{fr:'Introduction · Insights clés pour donner le ton',en:'Event introduction · Key insights to set the tone'}]]},
+    solo:[['Calvin Tchatchouang',{fr:'Introduction · Insights clés pour donner le ton',en:'Event introduction · Key insights to set the tone'}]]},
    {sid:'ven-talk',t:'10:10 – 10:25',ttl:{fr:'Inspirational Talk',en:'Inspirational Talk'},dur:'15 min',g:C.goldG,
     solo:[['Stephanie Mbida',{fr:'Lien avec les objectifs et attentes de l\u2019événement',en:'Link to goals and expectations from the event'}]]},
    {sid:'ven-r1',t:'10:30 – 11:15',ttl:{fr:'Workshops Round #1 — 7 salles parallèles',en:'Workshops Round #1 — 7 parallel rooms'},
@@ -1420,9 +1434,9 @@ const DAYS = [
     services:['Blood pressure','Blood glucose','HbA1c','BMI','Waist circumference','Urinalysis','Blood draw (si nécessaire)']},
    {sid:'ven-midpoint',t:'12:45 – 12:50',ttl:{fr:'Midpoint Reconnection',en:'Midpoint Reconnection'},dur:'5 min',g:C.tealG,
     solo:[['Dr Calvin',{fr:'Recentrer l\u2019énergie et les points clés',en:'Re-align energy and key takeaways'}]]},
-   {sid:'ven-pitch',t:'12:50 – 1:50 PM',ttl:{fr:'Business Growth Pitch Session',en:'Business Growth Pitch Session'},
+   {sid:'ven-pitch',t:'12:50 – 1:35 PM',ttl:{fr:'Business Growth Pitch Session',en:'Business Growth Pitch Session'},
     fmt:{fr:'10 min + 5 min Q&R',en:'10 min + 5 min Q&A'},g:C.tealG,
-    pitch:[['12:50 – 1:05','Pitch 1'],['1:05 – 1:20','Pitch 2'],['1:20 – 1:35','Pitch 3'],['1:35 – 1:50','Pitch 4']]},
+    pitch:[['12:50 – 1:05','Pitch 1'],['1:05 – 1:20','Pitch 2'],['1:20 – 1:35','Pitch 3']]},
    {sid:'ven-r2',t:'1:55 – 2:40 PM',ttl:{fr:'Workshops Round #2 — 7 salles parallèles',en:'Workshops Round #2 — 7 parallel rooms'},
     fmt:{fr:'25 min + 20 min Q&R',en:'25 min + 20 min Q&A'},g:C.tealG,
     rooms:[
@@ -1458,7 +1472,7 @@ const DAYS = [
    {sid:'ven-close',t:'2:40 – 4:00 PM',ttl:{fr:'Booth Exploration + Networking — Clôture',en:'Booth Exploration + Networking — Close'},dur:'80 min',g:C.goldG,
     solo:[['—',{fr:'Visite des exposants + Stand Up Networking · Clôture de la journée Business',en:'Visit exhibitors + Stand Up Networking · Close of the Business day'},true]]},
   ],
-  note:{fr:'sujets de Room 6/7 (Round #1) et Room 5/6/7 (Round #2) réservés — intervenants et créneaux fixés. Les 4 Pitchs ont leurs créneaux posés, en attente des noms.',
+  note:{fr:'sujets de Room 6/7 (Round #1) et Room 5/6/7 (Round #2) réservés — intervenants et créneaux fixés. Les 3 Pitchs ont leurs créneaux posés, en attente des noms.',
         en:'topics for Room 6/7 (Round #1) and Room 5/6/7 (Round #2) reserved — speakers and slots fixed. The 4 Pitches have their slots set, awaiting names.'},
   verify:{fr:'✓ Chrono vérifié : 10h00 à 16h00 exactement (360 min)',en:'✓ Timing verified: 10:00 AM to 4:00 PM exactly (360 min)'},
   evening:{t:'19:30 – 00:00',ttl:{fr:'Cultural Night',en:'Cultural Night'},dur:{fr:'Soirée',en:'Evening'},g:C.violetG,
@@ -1784,7 +1798,7 @@ function renderBlock(b, dayDate){
 }
 
 function renderExpoHeader(){
-  const kpis = [['6h',UI.kpiDuree[LANG]],['14',UI.kpiSessions[LANG]],['14',UI.kpiAteliers[LANG]],['4',UI.kpiPitchs[LANG]]];
+  const kpis = [['6h',UI.kpiDuree[LANG]],['14',UI.kpiSessions[LANG]],['14',UI.kpiAteliers[LANG]],['3',UI.kpiPitchs[LANG]]];
   let h = `<div class="expo-banner-mini">
     <div class="lbl">${UI.bannerLbl[LANG]}</div>
     <div class="meta">${UI.bannerMeta[LANG]}</div>
